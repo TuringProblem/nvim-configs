@@ -18,10 +18,10 @@ return {
 				colors.bg = transparent
 				colors.bg_dark = transparent
 				colors.bg_float = transparent and colors.none or bg_dark
-				colors.bg_highlight = bg_highlight
+				colors.bg_highlight = transparent 
 				colors.bg_popup = bg_dark
 				colors.bg_search = bg_search
-				colors.bg_sidebar = transparent and colors.none or bg_dark
+				colors.bg_sidebar = transparent 
 				colors.bg_statusline = transparent and colors.none or bg_dark
 				colors.bg_visual = bg_visual
 				colors.border = border
