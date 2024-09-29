@@ -40,6 +40,7 @@ return {
 				"clang-format",
 				"bashls",
 				"jdtls",
+        "java_language_server",
 			},
 		})
 
