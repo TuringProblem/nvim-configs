@@ -7,6 +7,27 @@ return {
 
     -- Set header
     dashboard.section.header.val = {
+      "                                         ..,",
+      "                             ....,,:;+ccllll",
+      "               ...,,+:;  cllllllllllllllllll",
+      "         ,cclllllllllll  lllllllllllllllllll",
+      "         llllllllllllll  lllllllllllllllllll",
+      "         llllllllllllll  lllllllllllllllllll",
+      "         llllllllllllll  lllllllllllllllllll",
+      "         llllllllllllll  lllllllllllllllllll",
+      "         llllllllllllll  lllllllllllllllllll",
+      "                                   ",
+      "         llllllllllllll  lllllllllllllllllll",
+      "         llllllllllllll  lllllllllllllllllll",
+      "         llllllllllllll  lllllllllllllllllll",
+      "         llllllllllllll  lllllllllllllllllll",
+      "         llllllllllllll  lllllllllllllllllll",
+      "         llllllllllllll  lllllllllllllllllll",
+      "         `'ccllllllllll  lllllllllllllllllll",
+      "               `' \\*::  :ccllllllllllllllll",
+      "                                ````''*::cll",
+      "                                          ``",
+      "                      ON WSL ",
       "                                                     ",
       "  ███╗   ██╗███████╗ ██████╗ ██╗   ██╗██╗███╗   ███╗ ",
       "  ████╗  ██║██╔════╝██╔═══██╗██║   ██║██║████╗ ████║ ",
@@ -14,7 +35,6 @@ return {
       "  ██║╚██╗██║██╔══╝  ██║   ██║╚██╗ ██╔╝██║██║╚██╔╝██║ ",
       "  ██║ ╚████║███████╗╚██████╔╝ ╚████╔╝ ██║██║ ╚═╝ ██║ ",
       "  ╚═╝  ╚═══╝╚══════╝ ╚═════╝   ╚═══╝  ╚═╝╚═╝     ╚═╝ ",
-      "                                                     ",
     }
 
     -- Set menu

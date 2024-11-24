@@ -22,6 +22,7 @@ return {
       },
       -- ensure these language parsers are installed
       ensure_installed = {
+        "java",
         "json",
         "javascript",
         "typescript",
@@ -35,7 +36,9 @@ return {
         "svelte",
         "graphql",
         "bash",
+        "go",
         "lua",
+        "powershell",
         "vim",
         "dockerfile",
         "gitignore",

@@ -30,6 +30,15 @@ return {
 				"tsserver",
 				"html",
 				"cssls",
+        "ast_grep",
+        "basedpyright",
+        "harper_ls",
+        "jedi_language_server",
+        "mutt_ls",
+        "gopls",
+        "pylsp",
+        "pylyzer",
+        "pyre",
 				"tailwindcss",
 				"svelte",
 				"lua_ls",
@@ -41,6 +50,7 @@ return {
 				"bashls",
 				"jdtls",
         "java_language_server",
+        "sqls",
 			},
 		})
 
