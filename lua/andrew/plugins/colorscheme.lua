@@ -1,9 +1,9 @@
 return {
   {
     dir = "~/.config/nvim/lua/colors", -- Correct path to your custom theme directory
-    name = "fallguy",
+    name = "mytheme",
     config = function()
-      require("colors.fallguy").setup()
+      require("colors.mytheme").setup()
       vim.cmd("colorscheme mytheme")
     end,
   },
