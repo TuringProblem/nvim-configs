@@ -10,13 +10,17 @@ keymap.set("n", "<leader>+", "<C-a>", { desc = "Increment number" }) -- Incremen
 keymap.set("n", "<leader>-", "<C-x>", { desc = "Decrement number" }) -- Decrement
 
 -- window management
-keymap.set("n", "<leader>sv", "<C-w>v", { desc = "Split window vertically" }) -- show window vertically
-keymap.set("n", "<leader>sh", "<C-w>s", { desc = "Split window horizontally" }) -- show window horizontally
-keymap.set("n", "<leader>se", "<C-w>=", { desc = "Make splits equal size" }) -- makes split windows equal width
-keymap.set("n", "<leader>sx", "<cmd>close<CR>", { desc = "Close current split" }) -- closes the current split window
+keymap.set("n", "<leader>sv", "<C-w>v", { desc = "[S]plit window [V]ertically" }) -- show window vertically
+keymap.set("n", "<leader>sh", "<C-w>s", { desc = "[S]plit window [H]orizontally" }) -- show window horizontally
+keymap.set("n", "<leader>se", "<C-w>=", { desc = "[S]plits size [E]qually" }) -- makes split windows equal width
+keymap.set("n", "<leader>sc", "<cmd>close<CR>", { desc = "[S]plit window [C]lose" }) -- closes the current split window
 
-keymap.set("n", "<leader>to", "<cmd>tabnew<CR>", { desc = "Open new tab" }) -- opens a new tab
-keymap.set("n", "<leader>tx", "<cmd>tabclose<CR>", { desc = "Close current tab" }) -- closes current tab
-keymap.set("n", "<leader>tn", "<cmd>tabn<CR>", { desc = "Go to next tab" }) -- go to next tab
-keymap.set("n", "<leader>tp", "<cmd>tabp<CR>", { desc = "Go to previous tab" }) -- go to previous tab
+keymap.set("n", "<leader>to", "<cmd>tabnew<CR>", { desc = "[T]ab [O]pen (new)" }) -- opens a new tab
+keymap.set("n", "<leader>tc", "<cmd>tabclose<CR>", { desc = "[T]ab [C]lose" }) -- closes current tab
+keymap.set("n", "<leader>tn", "<cmd>tabn<CR>", { desc = "[T]ab [N]ext -> (right)" }) -- go to next tab
+keymap.set("n", "<leader>tp", "<cmd>tabp<CR>", { desc = "[T]left ab [P]revious <- (left)" }) -- go to previous tab
 keymap.set("n", "<leader>tf", "<cmd>tabnew %<CR>", { desc = "Open current buffer in new tab" }) --
+
+-- Indentation
+keymap.set("v", "<", "<gv", { desc = "Indent left in visual mode."})
+keymap.set("v", ">", ">gv", { desc = "Indent right in visual mode."})
