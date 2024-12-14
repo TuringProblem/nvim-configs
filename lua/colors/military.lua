@@ -43,12 +43,15 @@ local function setHighlight()
     hl(0, "Operator", { fg = colors.greenTurf}) -- For Operators
     hl(0, "Special", { fg = colors.coyoteBrown}) -- For Operators
     hl(0, "String", { fg = colors.greenTurf})
+    hl(0, "Number", { fg = colors.creamOrange})
+    hl(0, "Float", { fg = colors.creamOrange})
     hl(0, "Keyword", { fg = colors.armyBrown})
-    hl(0, "Function", { fg = colors.WHITE})
+    hl(0, "Function", { fg = colors.coyoteBrown})
+    hl(0, "Delimiter", { fg = colors.greenTurf})
+    hl(0, "MatchParen", { fg = colors.creamOrange})
     --hl(0, "Variable", { fg = colors.creamOrange})
     hl(0, "Type", { fg = colors.creamOrange})
     --hl(0, "Constant", { fg = colors.WHITE})
-    --hl(0, "Float", { fg = colors.WHITE})
     --hl(0, "Boolean", { fg = colors.WHITE})
     --hl(0, "Statement", { fg = colors.SUBTLE_BLUE})
 
