@@ -29,6 +29,7 @@ return {
         "yaml",
         "html",
         "css",
+        "c_sharp",
         "prisma",
         "markdown",
         "markdown_inline",
