@@ -29,6 +29,7 @@ return {
         "yaml",
         "html",
         "css",
+        "kotlin",
         "c_sharp",
         "prisma",
         "markdown",

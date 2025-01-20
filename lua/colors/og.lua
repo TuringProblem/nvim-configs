@@ -4,6 +4,7 @@ local colors = {
     WHITE = '#FFFFFF',
     SUBTLE_BLUE = '#86b9b0',
     RED = "#8f5458",
+    BRIGHTRED = "#FF0000",
     YELLOW = "#FFFF00",
 
     -- GUI
@@ -36,6 +37,7 @@ local function setHighlight()
     hl(0, "LineNr", { fg = colors.SUBTLE_BLUE})
     hl(0, "CursorLineNr", { fg = colors.main})
     hl(0, "FoldColumn", { fg = colors.main})
+    hl(0, "Delimiter", { fg = colors.mainDeep})
     hl(0, "Folded", { fg = colors.main})
     hl(0, "TabLine", { fg = colors.WHITE})
     hl(0, "TabLineFill", { fg = colors.WHITE})
@@ -54,10 +56,12 @@ local function setHighlight()
     hl(0, "Keyword", { fg = colors.creamOrange})
     hl(0, "Function", { fg = colors.SUBTLE_BLUE})
     hl(0, "Variable", { fg = colors.creamOrange})
+    hl(0, "Identifier", { fg = colors.conditional})
     hl(0, "Type", { fg = colors.creamOrange })
     hl(0, "Constant", { fg = colors.WHITE})
     hl(0, "Float", { fg = colors.WHITE})
-    hl(0, "Boolean", { fg = colors.WHITE})
+    hl(0, "Boolean", { fg = colors.BRIGHTRED})
+    hl(0, "Exception", { fg = colors.mainDeep})
     hl(0, "Statement", { fg = colors.SUBTLE_BLUE})
 
 

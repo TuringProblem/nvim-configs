@@ -3,6 +3,8 @@
 local colors = {
     -- General Colors
     WHITE = '#FFFFFF',
+    BLACK = '#000000',
+    RED = '#FF0000',
     bg = "#3C3D3A",
     serviceGreen = "#6ea171",
     armyBrown = "#8b864e",
@@ -47,8 +49,8 @@ local function setHighlight()
     hl(0, "Float", { fg = colors.creamOrange})
     hl(0, "Keyword", { fg = colors.armyBrown})
     hl(0, "Function", { fg = colors.coyoteBrown})
-    hl(0, "Delimiter", { fg = colors.greenTurf})
-    hl(0, "MatchParen", { fg = colors.creamOrange})
+    hl(0, "Delimiter", { fg = colors.BLACK})
+    hl(0, "MatchParen", { fg = colors.RED})
     --hl(0, "Variable", { fg = colors.creamOrange})
     hl(0, "Type", { fg = colors.creamOrange})
     --hl(0, "Constant", { fg = colors.WHITE})
