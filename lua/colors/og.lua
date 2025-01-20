@@ -5,6 +5,7 @@ local colors = {
     SUBTLE_BLUE = '#86b9b0',
     RED = "#8f5458",
     YELLOW = "#FFFF00",
+    MINT = "#3EB489",
 
     -- GUI
     bg = "#000000", -- Background
@@ -55,7 +56,8 @@ local function setHighlight()
     hl(0, "Function", { fg = colors.SUBTLE_BLUE})
     hl(0, "Variable", { fg = colors.creamOrange})
     hl(0, "Type", { fg = colors.creamOrange })
-    hl(0, "Constant", { fg = colors.WHITE})
+    hl(0, "Constant", { fg = colors.MINT})
+    hl(0, "Delimiter", { fg = colors.YELLOW})
     hl(0, "Float", { fg = colors.WHITE})
     hl(0, "Boolean", { fg = colors.WHITE})
     hl(0, "Statement", { fg = colors.SUBTLE_BLUE})
