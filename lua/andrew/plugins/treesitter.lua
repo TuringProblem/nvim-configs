@@ -34,6 +34,8 @@ return {
         "prisma",
         "markdown",
         "markdown_inline",
+        "java", 
+        "kotlin", 
         "svelte",
         "graphql",
         "bash",
