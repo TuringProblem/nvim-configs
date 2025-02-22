@@ -1,59 +1,40 @@
 return {
-    "goolord/alpha-nvim",
-  event = "VimEnter",
-  config = function()
-    local alpha = require("alpha")
-    local dashboard = require("alpha.themes.dashboard")
+	"goolord/alpha-nvim",
+	event = "VimEnter",
+	config = function()
+		local alpha = require("alpha")
+		local dashboard = require("alpha.themes.dashboard")
 
-    -- Set header
-    dashboard.section.header.val = {
+		-- Set header
+		dashboard.section.header.val = {
 
-      "                                         ..,",
-      "                             ....,,:;+ccllll",
-      "               ...,,+:;  cllllllllllllllllll",
-      "         ,cclllllllllll  lllllllllllllllllll",
-      "         llllllllllllll  lllllllllllllllllll",
-      "         llllllllllllll  lllllllllllllllllll",
-      "         llllllllllllll  lllllllllllllllllll",
-      "         llllllllllllll  lllllllllllllllllll",
-      "         llllllllllllll  lllllllllllllllllll",
-      "                                   ",
-      "         llllllllllllll  lllllllllllllllllll",
-      "         llllllllllllll  lllllllllllllllllll",
-      "         llllllllllllll  lllllllllllllllllll",
-      "         llllllllllllll  lllllllllllllllllll",
-      "         llllllllllllll  lllllllllllllllllll",
-      "         llllllllllllll  lllllllllllllllllll",
-      "         `'ccllllllllll  lllllllllllllllllll",
-      "               `' \\*::  :ccllllllllllllllll",
-      "                                ````''*::cll",
-      "                                          ``",
-      "              ON WINDOWS 10 BTW                      ",
-      "                                                     ",
-      "                                                     ",
-      "  ███╗   ██╗███████╗ ██████╗ ██╗   ██╗██╗███╗   ███╗ ",
-      "  ████╗  ██║██╔════╝██╔═══██╗██║   ██║██║████╗ ████║ ",
-      "  ██╔██╗ ██║█████╗  ██║   ██║██║   ██║██║██╔████╔██║ ",
-      "  ██║╚██╗██║██╔══╝  ██║   ██║╚██╗ ██╔╝██║██║╚██╔╝██║ ",
-      "  ██║ ╚████║███████╗╚██████╔╝ ╚████╔╝ ██║██║ ╚═╝ ██║ ",
-      "  ╚═╝  ╚═══╝╚══════╝ ╚═════╝   ╚═══╝  ╚═╝╚═╝     ╚═╝ ",
-      "                                                     ",
-    }
+			"  ███╗   ██╗███████╗ ██████╗ ██╗   ██╗██╗███╗   ███╗ ",
+			"  ████╗  ██║██╔════╝██╔═══██╗██║   ██║██║████╗ ████║ ",
+			"  ██╔██╗ ██║█████╗  ██║   ██║██║   ██║██║██╔████╔██║ ",
+			"  ██║╚██╗██║██╔══╝  ██║   ██║╚██╗ ██╔╝██║██║╚██╔╝██║ ",
+			"  ██║ ╚████║███████╗╚██████╔╝ ╚████╔╝ ██║██║ ╚═╝ ██║ ",
+			"  ╚═╝  ╚═══╝╚══════╝ ╚═════╝   ╚═══╝  ╚═╝╚═╝     ╚═╝ ",
+			"╔═══════════════════════════════════════════════════╗",
+			"             ▶ { 𝒪𝓋ℯ𝓇𝓇𝒾𝒹ℯ ℰ𝒹𝒾𝓉𝒾ℴ𝓃 }                  ",
+			"╚═══════════════════════════════════════════════════╝",
+			"                                                     ",
+			"                                                     ",
+		}
 
-    -- Set menu
-    dashboard.section.buttons.val = {
-      dashboard.button("e", "  > New File", "<cmd>ene<CR>"),
-      dashboard.button("SPC ee", "  > Toggle file explorer", "<cmd>NvimTreeToggle<CR>"),
-      dashboard.button("SPC ff", "󰱼  > Find File", "<cmd>Telescope find_files<CR>"),
-      dashboard.button("SPC fs", "  > Find Word", "<cmd>Telescope live_grep<CR>"),
-      dashboard.button("SPC wr", "󰁯  > Restore Session For Current Directory", "<cmd>SessionRestore<CR>"),
-      dashboard.button("q", "  > Quit NVIM", "<cmd>qa<CR>"),
-    }
+		-- Set menu
+		dashboard.section.buttons.val = {
+			dashboard.button("e", "  > New File", "<cmd>ene<CR>"),
+			dashboard.button("SPC ee", "  > Toggle file explorer", "<cmd>NvimTreeToggle<CR>"),
+			dashboard.button("SPC ff", "󰱼  > Find File", "<cmd>Telescope find_files<CR>"),
+			dashboard.button("SPC fs", "  > Find Word", "<cmd>Telescope live_grep<CR>"),
+			dashboard.button("SPC wr", "󰁯  > Restore Session For Current Directory", "<cmd>SessionRestore<CR>"),
+			dashboard.button("q", "  > Quit NVIM", "<cmd>qa<CR>"),
+		}
 
-    -- Send config to alpha
-    alpha.setup(dashboard.opts)
+		-- Send config to alpha
+		alpha.setup(dashboard.opts)
 
-    -- Disable folding on alpha buffer
-    vim.cmd([[autocmd FileType alpha setlocal nofoldenable]])
-  end,
+		-- Disable folding on alpha buffer
+		vim.cmd([[autocmd FileType alpha setlocal nofoldenable]])
+	end,
 }

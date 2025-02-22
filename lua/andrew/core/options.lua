@@ -6,13 +6,13 @@ opt.relativenumber = true
 opt.number = true
 
 -- tabs & indentations
-opt.tabstop =  4 -- 4 space for tabs (prettier default)
+opt.tabstop = 4 -- 4 space for tabs (prettier default)
 opt.shiftwidth = 4 -- 4 spaces for indent width
-opt.softtabstop =  4 
+opt.softtabstop = 4
 opt.expandtab = true -- expand tab to spaces
 opt.autoindent = true -- copy indent from current line when starting new one
-opt.scrolloff = 10 -- Centers the text when you  type outside of the vertical bounds
-opt.sidescrolloff = 8 -- Centers the text when you type outside of the horizontal bounds 
+opt.scrolloff = 20 -- Centers the text when you  type outside of the vertical bounds
+opt.sidescrolloff = 8 -- Centers the text when you type outside of the horizontal bounds
 
 opt.wrap = false
 
@@ -30,16 +30,10 @@ opt.signcolumn = "yes" -- show sign column so that text doesn't shift
 -- backspace
 opt.backspace = "indent,eol,start" -- allow backspace on indent, end of line, or mode start of position
 
-
 -- clipboard
 opt.clipboard:append("unnamedplus") -- use system clipboard as default register
-
 
 -- split windows
 
 opt.splitright = true -- split veritcal window to the right
 opt.splitbelow = true -- split horizontal window to the bottom
-
-
-
-
