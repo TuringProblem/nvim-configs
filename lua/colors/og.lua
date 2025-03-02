@@ -18,6 +18,8 @@ local colors = {
 	mainDeep = "#05371b", -- Deep being a darker green
 	secondary = "#82EEFD", -- Secondary Color -> Light blue
 	creamOrange = "#ee9d83",
+	LAVENDER = "#D3D3FF",
+	SUNSET_RED = "#F25C5C",
 	SALMON = "#FF8C8C",
 	LIGHT_GRAY = "#C7C7C7",
 
@@ -53,19 +55,19 @@ local function setHighlight()
 	hl(0, "TsVariable", { fg = colors.WHITE })
 	hl(0, "Comment", { fg = colors.comments })
 	hl(0, "conditional", { fg = colors.mainDeep })
-	-- this is for the variable, TODO: NEED TO FIGURE OUT SOLUTION FOR (EX) colors.mainDeep (colors) -> will be secondary and (.mainDeep) will be creamOrange
-	hl(0, "Operator", { fg = colors.creamOrange }) -- For Operators
-	hl(0, "Special", { fg = colors.creamOrange }) -- For Operators
-	hl(0, "String", { fg = colors.YELLOW })
-	hl(0, "Keyword", { fg = colors.creamOrange })
-	hl(0, "Function", { fg = colors.SUBTLE_BLUE })
+	-- this is for the variable, TODO: NEED TO FIGURE OUT SOLUTION FOR (EX) colors.mainDeep (colors) => will be secondary and (.mainDeep) will be creamOrange
+	hl(0, "Operator", { fg = colors.LAVENDER }) -- For Operators (ex => <=, >=, ==, etc...)
+	hl(0, "Special", { fg = colors.creamOrange }) --
+	hl(0, "String", { fg = colors.YELLOW }) -- Obviouslly for strings
+	hl(0, "Keyword", { fg = colors.creamOrange }) -- var, int, else (in python), etc...
+	hl(0, "Function", { fg = colors.SUBTLE_BLUE }) -- def, methods in java, etc
 	hl(0, "Variable", { fg = colors.creamOrange })
 	hl(0, "Identifier", { fg = colors.conditional })
 	hl(0, "Type", { fg = colors.creamOrange })
 	hl(0, "Constant", { fg = colors.MINT })
-	hl(0, "Delimiter", { fg = colors.YELLOW })
+	hl(0, "Delimiter", { fg = colors.WHITE })
 	hl(0, "Float", { fg = colors.WHITE })
-	hl(0, "Boolean", { fg = colors.LIGHT_GRAY })
+	hl(0, "Boolean", { fg = colors.SUNSET_RED })
 	hl(0, "Exception", { fg = colors.mainDeep })
 	hl(0, "Statement", { fg = colors.SUBTLE_BLUE })
 end
