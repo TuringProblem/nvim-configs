@@ -40,6 +40,9 @@ local function open_floating_notes(opts)
 	local win = vim.api.nvim_open_win(buf, true, win_configs)
 	vim.api.nvim_win_set_option(win, "number", true)
 	vim.api.nvim_win_set_option(win, "relativenumber", true)
+
+	vim.api.nvim_set_hl(0, "MyFloatBG", { bg = "#1e222a" }) -- Your custom background color
+	vim.api.nvim_set_hl(0, "MyFloatBorder", { fg = "#ff0000" }) -- Your custom border color
 	return buf, win
 end
 

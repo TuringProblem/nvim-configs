@@ -99,6 +99,24 @@ local function move_right()
 	vim.api.nvim_win_set_config(state.floating.win, cfg)
 end
 
+local function move_bottom()
+	if not vim.api.nvim_win_is_valid(state.floating.win) then
+		vim.notify("Floating terminal is not open", vim.log.levels.WARN)
+		return
+	end
+	local new_width = math.floor(vim.o.columns)
+	local new_height = math.floor(vim.o.lines * 0.3)
+	local new_col = 0
+	local new_row = vim.o.lines - new_height
+
+	local cfg = vim.api.nvim_win_get_config(state.floating.win)
+	cfg.width = new_width
+	cfg.height = new_height
+	cfg.col = new_col
+	cfg.row = new_row
+	vim.api.nvim_win_set_config(state.floating.win, cfg)
+end
+
 local function move_center()
 	if not vim.api.nvim_win_is_valid(state.floating.win) then
 		vim.notify("Floating terminal is not open", vim.log.levels.WARN)
@@ -134,6 +152,7 @@ local function move_left()
 	vim.api.nvim_win_set_config(state.floating.win, cfg)
 end
 
+vim.keymap.set({ "n", "t" }, "<leader>tb", move_bottom, { silent = true, desc = "Move floating terminal bottom" })
 vim.keymap.set({ "n", "t" }, "<leader>tl", move_left, { silent = true, desc = "Move floating terminal left" })
 
 vim.keymap.set({ "n", "t" }, "<leader>tr", move_right, { desc = "Move floating terminal right" })
