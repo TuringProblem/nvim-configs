@@ -8,11 +8,6 @@ return {
 		-- import mason
 		local mason = require("mason")
 
-		-- import mason-lspconfig
-		local mason_lspconfig = require("mason-lspconfig")
-
-		local mason_tool_installer = require("mason-tool-installer")
-
 		-- enable mason and configure icons
 		mason.setup({
 			ui = {
@@ -30,6 +25,9 @@ return {
 				"tsserver",
 				"html",
 				"cssls",
+
+        "powershell_es",
+
         "ast_grep",
         "basedpyright",
         "harper_ls",
@@ -39,6 +37,7 @@ return {
         "pylsp",
         "pylyzer",
         "pyre",
+
 				"tailwindcss",
 				"svelte",
 				"lua_ls",

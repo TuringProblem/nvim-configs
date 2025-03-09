@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 return { "rose-pine/neovim",
   name = "rose-pine",
 priority = 1000,
@@ -14,8 +14,18 @@ config = function()
       }
     })  vim.cmd("colorscheme rose-pine-main")
   end
-=======
+
 return {
+
+  {
+    dir = "~/.config/nvim/lua/colors", -- Correct path to your custom theme directory
+    name = "og",
+    config = function()
+      require("colors.og").setup()
+      vim.cmd("colorscheme mytheme")
+    end,
+  },
+
 	"folke/tokyonight.nvim",
 	priority = 1000,
 	config = function()
@@ -51,5 +61,6 @@ return {
 		})
 		vim.cmd("colorscheme tokyonight")
 	end,
->>>>>>> 8f4c66f51f065f9e0ef399cd883bcea33fd26b1c
+
 }
+
