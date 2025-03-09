@@ -116,18 +116,27 @@ local function move_center()
 	cfg.row = new_row
 	vim.api.nvim_win_set_config(state.floating.win, cfg)
 end
-
-vim.keymap.set({ "n", "t" }, "<leader>ml", function()
+local function move_left()
 	if not vim.api.nvim_win_is_valid(state.floating.win) then
 		vim.notify("Floating terminal is not open", vim.log.levels.WARN)
 		return
 	end
-	local cfg = vim.api.nvim_win_get_config(state.floating.win)
-	cfg.col = 0
-	vim.api.nvim_win_set_config(state.floating.win, cfg)
-end, { silent = true, desc = "Move floating terminal left" })
+	local new_width = math.floor(vim.o.columns * 0.3)
+	local new_height = vim.o.lines - 2
+	local new_col = 0
+	local new_row = 0
 
-vim.keymap.set({ "n", "t" }, "<leader>mr", move_right, { desc = "Move floating terminal right" })
+	local cfg = vim.api.nvim_win_get_config(state.floating.win)
+	cfg.width = new_width
+	cfg.height = new_height
+	cfg.col = new_col
+	cfg.row = new_row
+	vim.api.nvim_win_set_config(state.floating.win, cfg)
+end
+
+vim.keymap.set({ "n", "t" }, "<leader>tl", move_left, { silent = true, desc = "Move floating terminal left" })
+
+vim.keymap.set({ "n", "t" }, "<leader>tr", move_right, { desc = "Move floating terminal right" })
 
 vim.keymap.set({ "n", "t" }, "<leader>mc", move_center, { silent = true, desc = "Center floating terminal" })
 
