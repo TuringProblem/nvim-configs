@@ -54,7 +54,7 @@ local function setHighlight()
 	-- Syntax Highlighting
 	hl(0, "TsVariable", { fg = colors.WHITE })
 	hl(0, "Comment", { fg = colors.comments })
-	hl(0, "conditional", { fg = colors.mainDeep })
+	hl(0, "conditional", { fg = colors.mainDeep, italic = true })
 	-- this is for the variable, TODO: NEED TO FIGURE OUT SOLUTION FOR (EX) colors.mainDeep (colors) => will be secondary and (.mainDeep) will be creamOrange
 	hl(0, "Operator", { fg = colors.LAVENDER }) -- For Operators (ex => <=, >=, ==, etc...)
 	hl(0, "Special", { fg = colors.creamOrange }) --
