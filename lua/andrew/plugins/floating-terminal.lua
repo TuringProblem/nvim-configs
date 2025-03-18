@@ -68,7 +68,7 @@ local function open_floating_terminal(opts)
 		row = row,
 		style = "minimal",
 		border = "rounded",
-		title = " { $Terminal } ",
+		title = " { </$NeoVim_Terminal> } ",
 		title_pos = "center",
 	}
 	local win = vim.api.nvim_open_win(buf, true, win_configs)
