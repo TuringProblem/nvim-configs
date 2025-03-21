@@ -222,25 +222,36 @@ local function setup_keymaps()
 	vim.keymap.set({ "n", "t" }, "<leader>tr", function()
 		move_terminal("right")
 	end, { desc = "Move terminal right" })
+
 	vim.keymap.set({ "n", "t" }, "<leader>tl", function()
 		move_terminal("left")
 	end, { desc = "Move terminal left" })
+
 	vim.keymap.set({ "n", "t" }, "<leader>tb", function()
 		move_terminal("bottom")
 	end, { desc = "Move terminal bottom" })
+
 	vim.keymap.set({ "n", "t" }, "<leader>tc", function()
 		move_terminal("center")
 	end, { desc = "Center terminal" })
+
+	vim.keymap.set({ "n", "t" }, "<leader>ts", function()
+		move_terminal("fullscreen")
+	end, { desc = "Fullscreen terminal" })
+
 	vim.keymap.set({ "n", "t" }, "<leader>tf", toggle_terminal_focus, { desc = "Toggle terminal focus" })
 
 	vim.api.nvim_create_user_command("TermToggle", toggle_terminal, {})
 	vim.api.nvim_create_user_command("TermFocus", toggle_terminal_focus, {})
+
 	vim.api.nvim_create_user_command("TermRight", function()
 		move_terminal("right")
 	end, {})
+
 	vim.api.nvim_create_user_command("TermLeft", function()
 		move_terminal("left")
 	end, {})
+
 	vim.api.nvim_create_user_command("TermBottom", function()
 		move_terminal("bottom")
 	end, {})

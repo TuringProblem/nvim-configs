@@ -34,6 +34,7 @@ return {
 				"c_sharp",
 				"prisma",
 				"markdown",
+				"ocaml",
 				"markdown_inline",
 				"swift",
 				"java",
