@@ -1,11 +1,10 @@
 vim.g.mapleader = " "
 
 local keymap = vim.keymap -- for conciseness
-
+--local state = vim.api.nvim_get_current_tabpage()
+--local conf = vim.api.nvim_win_get_config(state)
 
 --keymap.set("i", "<leader>o", "<ESC>", { desc = "Exit insert mode with jk" })
-
-
 
 keymap.set("n", "<leader>nh", ":nohl<CR>", { desc = "Clear search highlights" })
 
@@ -19,6 +18,12 @@ keymap.set("n", "<leader>sv", "<C-w>v", { desc = "[S]plit window [V]ertically" }
 keymap.set("n", "<leader>sh", "<C-w>s", { desc = "[S]plit window [H]orizontally" }) -- show window horizontally
 keymap.set("n", "<leader>se", "<C-w>=", { desc = "[S]plits size [E]qually" }) -- makes split windows equal width
 keymap.set("n", "<leader>sc", "<cmd>close<CR>", { desc = "[S]plit window [C]lose" }) -- closes the current split window
+--[[
+keymap.set("n", "<leader>sm", function()
+	conf.width = math.floor(vim.o.columns * 0.3)
+	conf.height = math.floor(vim.o.lines * 0.8)
+end, { desc = "[S]creen [M]aximize" })
+]]
 
 -- Switch between windows
 keymap.set("n", "<leader>vn", "<cmd>windo wincmd k<CR>", { desc = " [V]iew [N]ext" })
