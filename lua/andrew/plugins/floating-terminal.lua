@@ -1,17 +1,51 @@
+---@author { @Override } : 10:00 | 20250314
+
 vim.o.hidden = true
 vim.keymap.set("t", "<esc>", [[<c-\><c-n>]])
 
 local state = {
-	floating = {
-		buf = -1,
-		win = -1,
-		last_win = -1, -- Store the last active window before switching to terminal
-		visible = false, -- Whether the floating terminal is currently visible
-		term_job = nil, -- Store the terminal job id
-	},
+	terminals = {}, -- Store terminal info per tab
 }
 
+local function get_current_tabpage()
+	return vim.api.nvim_get_current_tabpage()
+end
+
+local function ensure_tab_state()
+	local tab = get_current_tabpage()
+	if not state.terminals[tab] then
+		state.terminals[tab] = {
+			buf = -1,
+			win = -1,
+			last_win = -1,
+			visible = false,
+			term_job = nil,
+		}
+	end
+	return state.terminals[tab]
+end
+
+local function get_term_state()
+	return ensure_tab_state()
+end
+
+local function cleanup_closed_tabs()
+	local current_tabs = {}
+	for _, tabpage in ipairs(vim.api.nvim_list_tabpages()) do
+		current_tabs[tabpage] = true
+	end
+
+	for tab in pairs(state.terminals) do
+		if not current_tabs[tab] then
+			state.terminals[tab] = nil
+		end
+	end
+end
+
 local function open_floating_terminal(opts)
+	cleanup_closed_tabs()
+	local term_state = get_term_state()
+
 	opts = opts or {}
 	local width = opts.width or math.floor(vim.o.columns * 0.8)
 	local height = opts.height or math.floor(vim.o.lines * 0.8)
@@ -19,8 +53,8 @@ local function open_floating_terminal(opts)
 	local row = math.floor((vim.o.lines - height) / 2 - 1)
 
 	local buf
-	if vim.api.nvim_buf_is_valid(state.floating.buf) then
-		buf = state.floating.buf
+	if vim.api.nvim_buf_is_valid(term_state.buf) then
+		buf = term_state.buf
 	else
 		buf = vim.api.nvim_create_buf(false, true)
 		vim.api.nvim_buf_set_option(buf, "bufhidden", "hide")
@@ -34,133 +68,205 @@ local function open_floating_terminal(opts)
 		row = row,
 		style = "minimal",
 		border = "rounded",
+		title = " { </$NeoVim_Terminal> } ",
+		title_pos = "center",
 	}
 	local win = vim.api.nvim_open_win(buf, true, win_configs)
+
+	vim.api.nvim_win_set_option(win, "wrap", false)
+	vim.api.nvim_win_set_option(win, "winhl", "NormalFloat:Normal")
+
 	return buf, win
 end
 
 local function toggle_terminal()
-	if not vim.api.nvim_win_is_valid(state.floating.win) or not state.floating.visible then
-		-- Terminal is either not open or hidden—open (or reopen) it.
+	local term_state = get_term_state()
+
+	if not vim.api.nvim_win_is_valid(term_state.win) or not term_state.visible then
 		local buf, win = open_floating_terminal()
-		state.floating.buf = buf
-		state.floating.win = win
-		state.floating.visible = true
-		-- Check if terminal is active: if not, open it.
+		term_state.buf = buf
+		term_state.win = win
+		term_state.visible = true
+
 		if
 			vim.bo[buf].buftype ~= "terminal"
-			or (state.floating.term_job and vim.fn.jobwait({ state.floating.term_job }, 0)[1] ~= -1)
+			or (term_state.term_job and vim.fn.jobwait({ term_state.term_job }, 0)[1] ~= -1)
 		then
-			state.floating.term_job = vim.fn.termopen(vim.o.shell)
+			term_state.term_job = vim.fn.termopen(vim.o.shell)
 		end
 		vim.cmd.startinsert()
 	else
 		-- Terminal is visible—hide it.
-		vim.api.nvim_win_hide(state.floating.win)
-		state.floating.visible = false
+		vim.api.nvim_win_hide(term_state.win)
+		term_state.visible = false
 	end
 end
 
+local function is_window_in_current_tab(win_id)
+	local current_tab = get_current_tabpage()
+	local win_tab = vim.api.nvim_win_get_tabpage(win_id)
+	return current_tab == win_tab
+end
+
 local function toggle_terminal_focus()
-	if not vim.api.nvim_win_is_valid(state.floating.win) or not state.floating.visible then
-		toggle_terminal()
+	local term_state = get_term_state()
+
+	if not vim.api.nvim_win_is_valid(term_state.win) then
+		vim.notify("Floating terminal is not open in this tab", vim.log.levels.WARN)
 		return
 	end
 
 	local current_win = vim.api.nvim_get_current_win()
-	if current_win == state.floating.win then
-		if state.floating.last_win and vim.api.nvim_win_is_valid(state.floating.last_win) then
-			vim.api.nvim_set_current_win(state.floating.last_win)
+
+	if current_win == term_state.win then
+		if
+			term_state.last_win
+			and vim.api.nvim_win_is_valid(term_state.last_win)
+			and is_window_in_current_tab(term_state.last_win)
+		then
+			vim.api.nvim_set_current_win(term_state.last_win)
 		else
-			vim.cmd("wincmd p")
+			local wins = vim.api.nvim_tabpage_list_wins(get_current_tabpage())
+			for _, win in ipairs(wins) do
+				if win ~= term_state.win then
+					vim.api.nvim_set_current_win(win)
+					break
+				end
+			end
 		end
 	else
-		state.floating.last_win = current_win
-		vim.api.nvim_set_current_win(state.floating.win)
+		term_state.last_win = current_win
+		vim.api.nvim_set_current_win(term_state.win)
 		vim.cmd("startinsert")
 	end
 end
 
-local function move_right()
-	if not vim.api.nvim_win_is_valid(state.floating.win) then
-		vim.notify("Floating terminal is not open", vim.log.levels.WARN)
+local function move_terminal(position)
+	local term_state = get_term_state()
+
+	if not vim.api.nvim_win_is_valid(term_state.win) then
+		vim.notify("Floating terminal is not open in this tab", vim.log.levels.WARN)
 		return
 	end
-	local new_width = math.floor(vim.o.columns * 0.3)
-	local new_height = vim.o.lines - 2
-	local new_col = vim.o.columns - new_width
-	local new_row = 0
 
-	local cfg = vim.api.nvim_win_get_config(state.floating.win)
-	cfg.width = new_width
-	cfg.height = new_height
-	cfg.col = new_col
-	cfg.row = new_row
-	vim.api.nvim_win_set_config(state.floating.win, cfg)
-end
+	local cfg = vim.api.nvim_win_get_config(term_state.win)
 
-local function move_bottom()
-	if not vim.api.nvim_win_is_valid(state.floating.win) then
-		vim.notify("Floating terminal is not open", vim.log.levels.WARN)
-		return
+	if position == "right" then
+		cfg.width = math.floor(vim.o.columns * 0.3)
+		cfg.height = vim.o.lines - 2
+		cfg.col = vim.o.columns - cfg.width
+		cfg.row = 0
+	elseif position == "left" then
+		cfg.width = math.floor(vim.o.columns * 0.3)
+		cfg.height = vim.o.lines - 2
+		cfg.col = 0
+		cfg.row = 0
+	elseif position == "bottom" then
+		cfg.width = vim.o.columns
+		cfg.height = math.floor(vim.o.lines * 0.3)
+		cfg.col = 0
+		cfg.row = vim.o.lines - cfg.height
+	elseif position == "center" then
+		cfg.width = math.floor(vim.o.columns * 0.8)
+		cfg.height = math.floor(vim.o.lines * 0.8)
+		cfg.col = math.floor((vim.o.columns - cfg.width) / 2)
+		cfg.row = math.floor((vim.o.lines - cfg.height) / 2 - 1)
+	elseif position == "fullscreen" then
+		cfg.width = vim.o.columns
+		cfg.height = vim.o.lines - 2
+		cfg.col = 0
+		cfg.row = 0
 	end
-	local new_width = math.floor(vim.o.columns)
-	local new_height = math.floor(vim.o.lines * 0.3)
-	local new_col = 0
-	local new_row = vim.o.lines - new_height
 
-	local cfg = vim.api.nvim_win_get_config(state.floating.win)
-	cfg.width = new_width
-	cfg.height = new_height
-	cfg.col = new_col
-	cfg.row = new_row
-	vim.api.nvim_win_set_config(state.floating.win, cfg)
+	vim.api.nvim_win_set_config(term_state.win, cfg)
 end
 
-local function move_center()
-	if not vim.api.nvim_win_is_valid(state.floating.win) then
-		vim.notify("Floating terminal is not open", vim.log.levels.WARN)
-		return
-	end
-	local new_width = math.floor(vim.o.columns)
-	local new_height = vim.o.lines - 2
-	local new_col = math.floor((vim.o.columns - new_width) / 2)
-	local new_row = 0
+vim.api.nvim_create_autocmd("BufDelete", {
+	callback = function(args)
+		for tab, term in pairs(state.terminals) do
+			if term.buf == args.buf then
+				term.buf = -1
+				term.visible = false
+				term.term_job = nil
+			end
+		end
+	end,
+})
 
-	local cfg = vim.api.nvim_win_get_config(state.floating.win)
-	cfg.width = new_width
-	cfg.height = new_height
-	cfg.col = new_col
-	cfg.row = new_row
-	vim.api.nvim_win_set_config(state.floating.win, cfg)
+vim.api.nvim_create_autocmd("WinClosed", {
+	callback = function(args)
+		local win_id = tonumber(args.match)
+		for tab, term in pairs(state.terminals) do
+			if term.win == win_id then
+				term.visible = false
+			end
+		end
+	end,
+})
+
+vim.api.nvim_create_autocmd("TabClosed", {
+	callback = function()
+		vim.defer_fn(cleanup_closed_tabs, 100)
+	end,
+})
+
+local function setup_keymaps()
+	vim.keymap.set({ "n", "t" }, "<leader>tt", toggle_terminal, { desc = "[T]oggle [T]erminal" })
+	vim.keymap.set(
+		{ "n", "t" },
+		"<leader>tf",
+		toggle_terminal_focus,
+		{ desc = "Toggle focus between terminal and editor" }
+	)
+
+	vim.keymap.set({ "n", "t" }, "<leader>tr", function()
+		move_terminal("right")
+	end, { desc = "Move terminal right" })
+
+	vim.keymap.set({ "n", "t" }, "<leader>tl", function()
+		move_terminal("left")
+	end, { desc = "Move terminal left" })
+
+	vim.keymap.set({ "n", "t" }, "<leader>tb", function()
+		move_terminal("bottom")
+	end, { desc = "Move terminal bottom" })
+
+	vim.keymap.set({ "n", "t" }, "<leader>tc", function()
+		move_terminal("center")
+	end, { desc = "Center terminal" })
+
+	vim.keymap.set({ "n", "t" }, "<leader>ts", function()
+		move_terminal("fullscreen")
+	end, { desc = "Fullscreen terminal" })
+
+	vim.keymap.set({ "n", "t" }, "<leader>tf", toggle_terminal_focus, { desc = "Toggle terminal focus" })
+
+	vim.api.nvim_create_user_command("TermToggle", toggle_terminal, {})
+	vim.api.nvim_create_user_command("TermFocus", toggle_terminal_focus, {})
+
+	vim.api.nvim_create_user_command("TermRight", function()
+		move_terminal("right")
+	end, {})
+
+	vim.api.nvim_create_user_command("TermLeft", function()
+		move_terminal("left")
+	end, {})
+
+	vim.api.nvim_create_user_command("TermBottom", function()
+		move_terminal("bottom")
+	end, {})
+	vim.api.nvim_create_user_command("TermCenter", function()
+		move_terminal("center")
+	end, {})
+	vim.api.nvim_create_user_command("TermFullscreen", function()
+		move_terminal("fullscreen")
+	end, {})
 end
-local function move_left()
-	if not vim.api.nvim_win_is_valid(state.floating.win) then
-		vim.notify("Floating terminal is not open", vim.log.levels.WARN)
-		return
-	end
-	local new_width = math.floor(vim.o.columns * 0.3)
-	local new_height = vim.o.lines - 2
-	local new_col = 0
-	local new_row = 0
 
-	local cfg = vim.api.nvim_win_get_config(state.floating.win)
-	cfg.width = new_width
-	cfg.height = new_height
-	cfg.col = new_col
-	cfg.row = new_row
-	vim.api.nvim_win_set_config(state.floating.win, cfg)
-end
-
-vim.keymap.set({ "n", "t" }, "<leader>tb", move_bottom, { silent = true, desc = "Move floating terminal bottom" })
-vim.keymap.set({ "n", "t" }, "<leader>tl", move_left, { silent = true, desc = "Move floating terminal left" })
-
-vim.keymap.set({ "n", "t" }, "<leader>tr", move_right, { desc = "Move floating terminal right" })
-
-vim.keymap.set({ "n", "t" }, "<leader>mc", move_center, { silent = true, desc = "Center floating terminal" })
-
-vim.api.nvim_create_user_command("Floterminal", toggle_terminal, {})
-vim.keymap.set({ "n", "t" }, "<leader>tt", toggle_terminal, { desc = "[T]oggle [T]erminal" })
-vim.keymap.set({ "n", "t" }, "<leader>tf", toggle_terminal_focus, { desc = "Toggle focus between terminal and editor" })
-
--- something
+setup_keymaps()
+-- Return the module
+return {
+	toggle = toggle_terminal,
+	focus = toggle_terminal_focus,
+	move = move_terminal,
+}
