@@ -7,7 +7,7 @@ local defaults = {
     width = 80,
     height = 20,
     border = "rounded",
-    title = " Shifty - Lua HOT Compiler ",
+    title = " Shifty - Multi-Language REPL ",
     title_pos = "center",
     relative = "editor",
     style = "minimal",
@@ -37,6 +37,8 @@ local defaults = {
     syntax_highlighting = true,
     auto_scroll = true,
     show_timestamp = true,
+    auto_language_detection = true,
+    show_language_info = true,
     colors = {
       success = "DiagnosticOk",
       error = "DiagnosticError", 
@@ -47,9 +49,30 @@ local defaults = {
   
   -- Parser settings
   parser = {
-    supported_languages = { "lua" },  -- Only Lua for now
-    block_pattern = "```%s*lua%s*\n(.-)\n```",  -- Standard markdown lua blocks
-    require_language_tag = true  -- Require explicit 'lua' language tag
+    supported_languages = { "lua", "python", "javascript" },
+    block_pattern = "```%s*(%w+)%s*\n(.-)\n```",
+    require_language_tag = false
+  },
+  
+  -- Language-specific configurations
+  languages = {
+    lua = {
+      enabled = true,
+      timeout = 5000,
+      safe_mode = true
+    },
+    python = {
+      enabled = true,
+      interpreter = "python3",
+      venv_support = true,
+      timeout = 10000
+    },
+    javascript = {
+      enabled = true,
+      runtime = "node",
+      npm_support = false,
+      timeout = 8000
+    }
   }
 }
 

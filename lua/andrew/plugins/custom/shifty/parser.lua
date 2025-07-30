@@ -16,11 +16,6 @@ function M.extract_code_block_at_cursor(lines, cursor_line)
   local opening_line = lines[start_line]
   language = M.parse_opening_line(opening_line)
   
-  -- Only process Lua blocks for now
-  if language ~= "lua" then
-    return nil
-  end
-  
   -- Extract code content
   for i = start_line + 1, end_line - 1 do
     table.insert(block_lines, lines[i])
@@ -78,16 +73,10 @@ function M.parse_opening_line(line)
   local language = line:match("^```%s*(%w+)")
   
   if language then
-    -- Only process if it's lua (for now, as per requirements)
-    if language:lower() == "lua" then
-      return language:lower(), nil
-    else
-      -- Not a supported language
-      return nil, nil
-    end
+    return language:lower(), nil
   end
   
-  -- Plain ``` without language - assume lua
+  -- Plain ``` without language - assume lua for backward compatibility
   if line:match("^```%s*$") then
     return "lua", nil
   end
