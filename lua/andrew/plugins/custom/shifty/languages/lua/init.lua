@@ -8,7 +8,7 @@ local metadata = {
   name = "lua",
   version = "1.0.0",
   file_extensions = {".lua"},
-  executable_check = "lua --version",
+  executable_check = "lua",  -- Built into Neovim, no external executable needed
   aliases = {"lua"}
 }
 

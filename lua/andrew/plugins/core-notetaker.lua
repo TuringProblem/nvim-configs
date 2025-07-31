@@ -9,11 +9,31 @@ local state = {
 	},
 }
 
+-- Move the notes window to the right side of the screen
+function M.move_right()
+	if not vim.api.nvim_win_is_valid(state.notes.win) then
+		vim.notify("Floating notes window is not open", vim.log.levels.WARN)
+		return
+	end
+	local new_width = math.floor(vim.o.columns * 0.2)
+	local new_height = vim.o.lines - 2
+	local new_col = vim.o.columns - new_width
+	local new_row = 0
+
+	local cfg = vim.api.nvim_win_get_config(state.notes.win)
+	cfg.width = new_width
+	cfg.height = new_height
+	cfg.col = new_col
+	cfg.row = new_row
+	vim.api.nvim_win_set_config(state.notes.win, cfg)
+end
+
 -- Create or reuse a scratch buffer in a floating window
 local function open_floating_notes(opts)
 	opts = opts or {}
-	local width = opts.width or math.floor(vim.o.columns * 0.8)
-	local height = opts.height or math.floor(vim.o.lines * 0.8)
+
+	local width = opts.width or math.floor(vim.o.columns * 0.2)
+	local height = opts.height or math.floor(vim.o.lines * 1)
 	local col = math.floor((vim.o.columns - width) / 2)
 	local row = math.floor((vim.o.lines - height) / 2 - 1)
 
@@ -64,25 +84,6 @@ function M.toggle_notes()
 	end
 end
 
--- Move the notes window to the right side of the screen
-function M.move_right()
-	if not vim.api.nvim_win_is_valid(state.notes.win) then
-		vim.notify("Floating notes window is not open", vim.log.levels.WARN)
-		return
-	end
-	local new_width = math.floor(vim.o.columns * 0.3)
-	local new_height = vim.o.lines - 2
-	local new_col = vim.o.columns - new_width
-	local new_row = 0
-
-	local cfg = vim.api.nvim_win_get_config(state.notes.win)
-	cfg.width = new_width
-	cfg.height = new_height
-	cfg.col = new_col
-	cfg.row = new_row
-	vim.api.nvim_win_set_config(state.notes.win, cfg)
-end
-
 -- Move the notes window to center
 function M.move_center()
 	if not vim.api.nvim_win_is_valid(state.notes.win) then
@@ -101,8 +102,10 @@ function M.move_center()
 	cfg.row = new_row
 	vim.api.nvim_win_set_config(state.notes.win, cfg)
 end
-vim.keymap.set("n", "<leader>nn", M.toggle_notes, { desc = "[F]loating [N]otes" })
 
+-- this function is just used for going back and forth between notes and the actual code
+
+vim.keymap.set("n", "<leader>nn", M.toggle_notes, { desc = "[F]loating [N]otes" })
 -- Keys to move the notes window around
 vim.keymap.set("n", "<leader>nr", M.move_right, { desc = "Move floating notes to the right" })
 vim.keymap.set("n", "<leader>nc", M.move_center, { desc = "Center floating notes window" })

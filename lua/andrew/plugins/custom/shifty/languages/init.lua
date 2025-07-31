@@ -162,7 +162,9 @@ function M.auto_register_builtin_languages(config)
   local builtin_languages = {
     "lua",
     "python", 
-    "javascript"
+    "javascript",
+    "c",
+    "rust"
   }
   
   for _, language in ipairs(builtin_languages) do

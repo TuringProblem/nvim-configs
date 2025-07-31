@@ -162,6 +162,10 @@ function M.check_executable(module)
     return false
   end
   
+  if command == "lua" then
+    return true
+  end
+  
   -- Check if command exists using vim.fn.executable
   return vim.fn.executable(command) == 1
 end
