@@ -5,14 +5,16 @@ This markdown file demonstrates the revolutionary compiled language support with
 ## 🔧 Lua Example (Fixed!)
 
 ```lua
+-- Test Neovim integration
+local colors = vim.api.nvim_get_color_map()
+print("Available colors: " .. #vim.tbl_keys(colors))
+```
+
+```lua
 print("Hello from Lua!")
 local x = 10
 local y = 20
 print("x + y = " .. (x + y))
-
--- Test Neovim integration
-local colors = vim.api.nvim_get_color_map()
-print("Available colors: " .. #vim.tbl_keys(colors))
 ```
 
 ## 🐍 Python Example
@@ -35,13 +37,14 @@ console.log("Hello from JavaScript!");
 
 // Test ES6 features
 const arr = [1, 2, 3, 4, 5];
-const doubled = arr.map(x => x * 2);
+const doubled = arr.map((x) => x * 2);
 console.log("Doubled array:", doubled);
 ```
 
 ## 🔥 C Language Examples
 
 ### ✅ Correct C Code
+
 ```c
 #include <stdio.h>
 int main() {
@@ -51,6 +54,7 @@ int main() {
 ```
 
 ### ❌ C Code with Missing Header (Will Show Suggestions)
+
 ```c
 int main() {
     printf("Hello, World!\n");
@@ -59,6 +63,7 @@ int main() {
 ```
 
 ### ❌ C Code with Missing Main Function (Will Show Suggestions)
+
 ```c
 #include <stdio.h>
 void hello() {
@@ -67,6 +72,7 @@ void hello() {
 ```
 
 ### ❌ C Code with Missing Semicolon (Will Show Suggestions)
+
 ```c
 #include <stdio.h>
 int main() {
@@ -76,6 +82,7 @@ int main() {
 ```
 
 ### 🔢 C Code with Math Functions
+
 ```c
 #include <stdio.h>
 #include <math.h>
@@ -88,6 +95,7 @@ int main() {
 ```
 
 ### 🎲 C Code with Random Numbers
+
 ```c
 #include <stdio.h>
 #include <stdlib.h>
@@ -103,6 +111,7 @@ int main() {
 ## 🦀 Rust Language Examples
 
 ### ✅ Correct Rust Code
+
 ```rust
 fn main() {
     println!("Hello, World!");
@@ -110,13 +119,26 @@ fn main() {
 ```
 
 ### ❌ Rust Code with Missing Main Function (Will Show Suggestions)
+
 ```rust
 fn hello() {
     println!("Hello, World!");
 }
 ```
 
+### fixed verion
+
+```rust
+fn hello() {
+   println!("Hello, World!");
+}
+fn main() {
+    hello();
+}
+```
+
 ### ❌ Rust Code with Missing Semicolon (Will Show Suggestions)
+
 ```rust
 fn main() {
     let x = 42
@@ -125,6 +147,7 @@ fn main() {
 ```
 
 ### 🔢 Rust Code with Collections
+
 ```rust
 use std::collections::HashMap;
 fn main() {
@@ -135,6 +158,7 @@ fn main() {
 ```
 
 ### 🧵 Rust Code with Threading
+
 ```rust
 use std::thread;
 fn main() {
@@ -146,6 +170,7 @@ fn main() {
 ```
 
 ### 🔒 Rust Code with Mutex
+
 ```rust
 use std::sync::Mutex;
 fn main() {
@@ -161,6 +186,7 @@ fn main() {
 ## 🎯 Mixed Language Development
 
 ### Data Processing Pipeline
+
 ```python
 # Python: Load and process data
 import json
@@ -205,6 +231,7 @@ print("Available colors for UI: " .. #vim.tbl_keys(colors))
 ## 🏆 Performance Comparison
 
 ### C Performance Test
+
 ```c
 #include <stdio.h>
 #include <time.h>
@@ -222,6 +249,7 @@ int main() {
 ```
 
 ### Rust Performance Test
+
 ```rust
 use std::time::Instant;
 fn main() {
@@ -233,6 +261,7 @@ fn main() {
 ```
 
 ### Python Performance Test
+
 ```python
 import time
 start = time.time()
@@ -244,6 +273,7 @@ print(f"Python: Sum = {sum_val} ({elapsed:.3f} seconds)")
 ## 🎉 Features Demonstrated
 
 ### ✅ Compiled Language Support
+
 - **C**: GCC compilation with semantic validation
 - **Rust**: Rustc compilation with memory safety checks
 - **Python**: Interpreted execution
@@ -251,21 +281,25 @@ print(f"Python: Sum = {sum_val} ({elapsed:.3f} seconds)")
 - **Lua**: Native Neovim integration
 
 ### ✅ Semantic Validation
+
 - **Header Detection**: Automatically suggests missing includes
 - **Function Validation**: Checks for main functions and proper syntax
 - **Import Suggestions**: Recommends missing imports and dependencies
 - **Error Context**: Provides specific line-by-line suggestions
 
 ### ✅ Intelligent Error Handling
+
 - **Compilation Errors**: Clear error messages with suggestions
 - **Runtime Errors**: Proper error capture and display
 - **Semantic Warnings**: Proactive suggestions for code improvement
 - **Performance Metrics**: Compilation and execution time tracking
 
 ### ✅ Multi-Language Integration
+
 - **Seamless Mixing**: Use any combination of languages in one document
 - **Data Flow**: Pass data between different language contexts
 - **Tool Integration**: Leverage the best tool for each task
 - **Unified Interface**: Consistent experience across all languages
 
-This is the future of multi-language development! 🚀 
+This is the future of multi-language development! 🚀
+

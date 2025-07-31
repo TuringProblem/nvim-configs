@@ -8,8 +8,8 @@ local metadata = {
   name = "c",
   version = "1.0.0",
   file_extensions = {".c", ".h"},
-  executable_check = "gcc --version",
-  aliases = {"c", "gcc"}
+  executable_check = "gcc --version",  -- Will be updated during setup
+  aliases = {"c", "gcc", "clang"}
 }
 
 -- Create the C language module
@@ -217,7 +217,8 @@ function M.execute_c_code(module, code, context)
     -- Add metadata
     result.metadata = {
       language = "c",
-      version = module.environment.gcc_version,
+      version = module.environment.compiler_version,
+      compiler = module.environment.compiler_name,
       execution_mode = "compiled",
       environment_ready = module.environment.ready,
       compilation_time = result.execution_time * 0.7, -- Rough estimate
@@ -247,33 +248,59 @@ end
 function M.setup_c_environment(module, config)
   config = config or {}
   
-  -- Call base setup first
+  -- Detect available C compilers
+  local compilers = {
+    {name = "gcc", check = "gcc --version", version_pattern = "gcc %(([^%)]+)%) ([%d%.]+)"},
+    {name = "clang", check = "clang --version", version_pattern = "clang version ([%d%.]+)"},
+    {name = "cc", check = "cc --version", version_pattern = "([%d%.]+)"}
+  }
+  
+  local selected_compiler = nil
+  local compiler_version = nil
+  
+  -- Try to find an available compiler
+  for _, compiler in ipairs(compilers) do
+    if vim.fn.executable(compiler.name) == 1 then
+      local version_output = vim.fn.system(compiler.check)
+      local version = version_output:match(compiler.version_pattern)
+      
+      if version then
+        selected_compiler = compiler.name
+        compiler_version = version
+        break
+      end
+    end
+  end
+  
+  if not selected_compiler then
+    utils.log("No C compiler found (gcc, clang, or cc)", "error")
+    return false
+  end
+  
+  -- Update metadata for the detected compiler
+  module.metadata.executable_check = selected_compiler .. " --version"
+  
+  -- Call base setup with updated metadata
   local base_success = base.setup_environment(module, config)
   if not base_success then
     return false
   end
   
-  -- Get GCC version
-  local version_output = vim.fn.system(module.metadata.executable_check)
-  local version = version_output:match("gcc %(([^%)]+)%) ([%d%.]+)")
-  
-  if not version then
-    -- Try alternative version formats
-    version = version_output:match("gcc %(([^%)]+)%)")
-  end
-  
-  if not version then
-    utils.log("Failed to get GCC version", "error")
-    return false
-  end
-  
   -- Set up C-specific environment
-  module.environment.gcc_version = version
-  module.environment.compiler = config.compiler or "gcc"
-  module.environment.flags = config.flags or "-Wall -Wextra -std=c99"
-  module.environment.optimization = config.optimization or "-O0"
+  module.environment.compiler_name = selected_compiler
+  module.environment.compiler_version = compiler_version
+  module.environment.compiler = config.compiler or selected_compiler
   
-  utils.log(string.format("C environment setup complete (GCC %s)", version), "info")
+  -- Set appropriate flags based on compiler
+  if selected_compiler == "clang" then
+    module.environment.flags = config.flags or "-Wall -Wextra -std=c99"
+    module.environment.optimization = config.optimization or "-O0"
+  else
+    module.environment.flags = config.flags or "-Wall -Wextra -std=c99"
+    module.environment.optimization = config.optimization or "-O0"
+  end
+  
+  utils.log(string.format("C environment setup complete (%s %s)", selected_compiler, compiler_version), "info")
   return true
 end
 
@@ -284,7 +311,8 @@ function M.get_c_capabilities(module)
   local base_capabilities = base.get_capabilities(module)
   
   return vim.tbl_extend("force", base_capabilities, {
-    gcc_version = module.environment.gcc_version,
+    compiler_name = module.environment.compiler_name,
+    compiler_version = module.environment.compiler_version,
     compiler = module.environment.compiler,
     flags = module.environment.flags,
     optimization = module.environment.optimization,
@@ -305,7 +333,7 @@ function M.health_check_c(module)
   end
   
   -- Check C-specific health
-  if not module.environment.gcc_version then
+  if not module.environment.compiler_version then
     return false
   end
   
@@ -349,7 +377,8 @@ function M.cleanup_c(module)
   base.cleanup(module)
   
   -- C-specific cleanup (if any)
-  module.environment.gcc_version = nil
+  module.environment.compiler_name = nil
+  module.environment.compiler_version = nil
   module.environment.compiler = nil
   module.environment.flags = nil
   module.environment.optimization = nil
