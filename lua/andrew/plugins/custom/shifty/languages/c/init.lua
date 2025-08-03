@@ -65,7 +65,6 @@ function M.validate_c_semantics(code)
 	-- Common header validation
 	local common_headers_v2 = {
 		["#include <stdio.h>"] = {
-			printf = true,
 			scanf = true,
 		},
 		["#include <stdlib.h>"] = {
@@ -99,13 +98,11 @@ function M.validate_c_semantics(code)
 		end
 	end
 
-	-- Check for return statement in main
 	if code:match("int%s+main") and not code:match("return%s+[^;]+;") then
 		table.insert(suggestions, "Add 'return 0;' at the end of main function")
 		table.insert(warnings, "int main() should return a value")
 	end
 
-	-- Check for missing semicolons
 	local lines = vim.split(code, "\n")
 	for i, line in ipairs(lines) do
 		local trimmed = vim.trim(line)
@@ -394,4 +391,3 @@ end
 local c_module = create_c_module()
 
 return c_module
-

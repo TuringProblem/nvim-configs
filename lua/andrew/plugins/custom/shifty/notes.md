@@ -51,10 +51,29 @@ local common_imports_example = {
 
 ```
 local common_headers = {
-    [@stdio] = { printf = ".printf;", scanf = ".scanf;", getchar = ".getchar;", putchar = ".putchar;", fgets = ".fgets;", sscanf = ".sscanf;", gets = ".gets;", puts = ".puts;", feof = ".feof;", ferror = ".ferror;", perror = ".perror;", remove = ".remove;", rename = ".rename;", rewind = ".rewind;", tmpfile = ".tmpfile;", tmpnam = ".tmpnam;", ungetc = ".ungetc;", vfprintf = ".vfprintf;", vprintf = ".vprintf;", vsprintf = ".vsprintf;"},
+    [@stdio] = { printf = ".printf;",scanf = ".scanf;", getchar = ".getchar;", putchar = ".putchar;", fgets = ".fgets;", sscanf = ".sscanf;", gets = ".gets;", puts = ".puts;", feof = ".feof;", ferror = ".ferror;", perror = ".perror;", remove = ".remove;", rename = ".rename;", rewind = ".rewind;", tmpfile = ".tmpfile;", tmpnam = ".tmpnam;", ungetc = ".ungetc;", vfprintf = ".vfprintf;", vprintf = ".vprintf;", vsprintf = ".vsprintf;"},
     [@stdlib] = { atoi = ".atoi;", atof = ".atof;", strtod = ".strtod;", strtol = ".strtol;", strtoul = ".strtoul;", calloc = ".calloc;", malloc = ".malloc;", realloc = ".realloc;", free = ".free;", exit = ".exit;", abort = ".abort;"},
 }
 
-
-
 ```
+
+> maybe even layout the code more efficient using the CFG of the language
+
+**_ example:_**
+
+have it check what file you are in, from the file extension we can determine the langaue:
+
+.lua -> lua
+.c -> c
+.cpp -> c
+.h -> c
+.java -> java
+.py -> python
+.rs -> rust
+
+^ This may allow us to just highlight the text we want to test and then run a hotkey:
+**_ example: _**
+
+> {highlight first}<leader>s+e -> shifty execute
+
+Figure out how to keep both...
