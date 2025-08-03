@@ -19,7 +19,10 @@ local defaults = {
 	keymaps = {
 		toggle = "<leader>st",
 		run = "<leader>sr",
-		clear = "<leader>sc",
+		smart = "<leader>se", -- New: Smart execution (selection/block/context)
+		selection = "<leader>ss", -- New: Execute selection
+		context = "<leader>sl", -- New: Execute current line/context
+		clear = "<leader>sc", -- Clear output
 		close = "<Esc>", -- In floating window
 	},
 

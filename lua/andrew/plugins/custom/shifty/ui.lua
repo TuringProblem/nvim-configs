@@ -59,12 +59,14 @@ function M.set_initial_content(buf)
 		title,
 		"━━━━━━━━━━━━━━━━━━━━━━━━━━",
 		"",
-		"Ready to execute code blocks!",
+		"Ready to execute code!",
 		"",
 		"Usage:",
-		"• Place cursor in a ```{name} code block",
-		"• See available languages supported by Shifty",
-		"• Press " .. (config.get("keymaps.run") or "<leader>sr") .. " to execute",
+		"• In single-language files: Select code and press " .. (config.get("keymaps.selection") or "<leader>ss"),
+		"• Or place cursor on a line and press " .. (config.get("keymaps.context") or "<leader>sl"),
+		"• Or use smart execution: " .. (config.get("keymaps.smart") or "<leader>se"),
+		"• In markdown/notebooks: Place cursor in ```{language} code block",
+		"• Press " .. (config.get("keymaps.run") or "<leader>sr") .. " to execute fenced blocks",
 		"• Press " .. (config.get("keymaps.clear") or "<leader>sc") .. " to clear output",
 		"",
 		"Waiting for code execution...",
@@ -106,7 +108,7 @@ function M.update_output(win, result, block_identifier)
 	table.insert(lines, "━━━━━━━━━━━━━━━━━━━━━━━━━━")
 	table.insert(
 		lines,
-		"Place cursor in ```lua block and press " .. (config.get("keymaps.run") or "<leader>sr") .. " to execute"
+		-- "Place cursor in ```lua block and press " .. (config.get("keymaps.run") or "<leader>sr") .. " to execute"
 	)
 
 	vim.api.nvim_buf_set_lines(buf, 0, -1, false, lines)
