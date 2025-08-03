@@ -1,6 +1,5 @@
 return {
 
-	--[[
 	"ellisonleao/gruvbox.nvim",
 	priority = 1000,
 	config = function()
@@ -28,11 +27,10 @@ return {
 			overrides = {
 				-- Make functions italic
 				["@function"] = { italic = true },
-				["@function.call"] = { italic = true },
+				["@function.call"] = { italic = true, bold = true, fg = "#90D5FF" },
 				["@method"] = { italic = true },
-				["@method.call"] = { italic = true },
+				["@method.call"] = { italic = true, bold = true },
 				["Function"] = { italic = true },
-				-- You can also add other function-related highlights
 				["@function.builtin"] = { italic = true },
 				["@constructor"] = { italic = true },
 			},
@@ -44,7 +42,7 @@ return {
 		vim.cmd("colorscheme gruvbox")
 	end,
 }
-]]
+--[[
 	{
 		dir = "~/.config/nvim/lua/colors", -- Correct path to your custom theme directory
 		name = "testColor",
@@ -54,3 +52,4 @@ return {
 		end,
 	},
 }
+]]

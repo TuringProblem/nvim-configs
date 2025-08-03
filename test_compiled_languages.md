@@ -46,9 +46,9 @@ console.log("Doubled array:", doubled);
 ### ✅ Correct C Code
 
 ```c
-#include <stdio.h>
+#include <stdio.h> // Include the standard input/output library
 int main() {
-    printf("Hello, World!\n");
+    printf("Hello, world!\n");
     return 0;
 }
 ```
@@ -302,4 +302,3 @@ print(f"Python: Sum = {sum_val} ({elapsed:.3f} seconds)")
 - **Unified Interface**: Consistent experience across all languages
 
 This is the future of multi-language development! 🚀
-
