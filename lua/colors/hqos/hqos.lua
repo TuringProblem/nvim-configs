@@ -1,11 +1,90 @@
 local c = require("colors.hqos.palette")
 
 local hl = vim.api.nvim_set_hl
-loca thmee = {}
 
-theme.set_highlights = function()
-  -- Editor
-  hl(0, "Normal", { fg = c.fg, bg = c.bg })
+local function set_highlights()
+	-- Editor
+	hl(0, "Normal", { fg = c.fg, bg = c.bg })
+	hl(0, "SignColumn", { fg = "NONE", bg = c.bg })
+	hl(0, "MsgArea", { fg = c.fg, bg = c.bg })
+	hl(0, "ModeMsg", { fg = c.fg, bg = c.alt_bg })
+	hl(0, "MsgSeparator", { fg = c.fg, bg = c.bg })
+	hl(0, "SpellBad", { fg = "NONE", bg = "NONE", sp = c.system_red, undercurl = true })
+	hl(0, "SpellCap", { fg = "NONE", bg = "NONE", sp = c.system_orange, undercurl = true })
+	hl(0, "SpellLocal", { fg = "NONE", bg = "NONE", sp = c.system_green, underline = true })
+	hl(0, "SpellRare", { fg = "NONE", bg = "NONE", sp = c.system_purple, underline = true })
+	hl(0, "NormalNC", { fg = c.fg, bg = c.bg })
+	hl(0, "Pmenu", { fg = c.fg, bg = c.alt_bg })
+	hl(0, "PmenuSel", { fg = "NONE", bg = c.alt_bg })
+	hl(0, "WildMenu", { fg = c.fg, bg = c.alt_bg })
+	hl(0, "CursorLineNr", { fg = c.alt_fg, bg = "NONE", bold = true })
+	hl(0, "Folded", { fg = c.system_grey_dark, bg = c.alt_bg })
+	hl(0, "FoldColumn", { fg = c.system_grey_dark, bg = c.alt_bg })
+	hl(0, "LineNr", { fg = c.system_grey_dark, bg = "NONE" })
+	hl(0, "FloatBoder", { fg = c.system_grey_dark, bg = c.alt_bg })
+	hl(0, "Whitespace", { fg = c.bg, bg = "NONE" })
+	hl(0, "VertSplit", { fg = c.system_grey_dark, bg = c.bg })
+	hl(0, "CursorLine", { fg = "NONE", bg = c.cursorline })
+	hl(0, "CursorColumn", { fg = "NONE", bg = c.alt_bg })
+	hl(0, "ColorColumn", { fg = "NONE", bg = c.alt_bg })
+	hl(0, "NormalFloat", { fg = "NONE", bg = c.alt_bg })
+	hl(0, "Visual", { fg = "NONE", bg = c.system_pink_light })
+	hl(0, "VisualNOS", { fg = "NONE", bg = c.alt_bg })
+	hl(0, "WarningMsg", { fg = c.system_red, bg = c.bg })
+	hl(0, "DiffText", { fg = c.alt_bg, bg = c.system_purple_light })
+	hl(0, "DiffAdd", { fg = c.system_green, bg = c.system_green_light })
+	hl(0, "DiffChange", { fg = c.alt_bg, bg = c.system_yellow, underline = true })
+	hl(0, "DiffDelete", { fg = c.system_red, bg = c.system_pink_light })
+	hl(0, "QuickFixLine", { fg = "NONE", bg = c.alt_bg })
+	hl(0, "PmenuSbar", { fg = "NONE", bg = c.alt_bg })
+	hl(0, "PmenuThumb", { fg = "NONE", bg = c.system_grey_dark })
+	hl(0, "MatchWord", { fg = "NONE", bg = "NONE", underline = true })
+	hl(0, "MatchParen", { fg = c.alt_fg, bg = "NONE", underline = true })
+	hl(0, "MatchWordCur", { fg = "NONE", bg = "NONE", underline = true })
+	hl(0, "MatchParenCur", { fg = "NONE", bg = "NONE", underline = true })
+	hl(0, "Cursor", { fg = c.bg, bg = c.cursor_bg })
+	hl(0, "lCursor", { fg = c.bg, bg = c.cursor_bg })
+	hl(0, "CursorIM", { fg = c.bg, bg = c.cursor_bg })
+	hl(0, "TermCursor", { fg = c.bg, bg = c.cursor_bg })
+	hl(0, "TermCursorNC", { fg = c.bg, bg = c.cursor_bg })
+	hl(0, "Conceal", { fg = c.system_grey_dark, bg = "NONE" })
+	hl(0, "Directory", { fg = c.system_green, bg = "NONE" })
+	hl(0, "SpecialKey", { fg = c.alt_fg, bg = "NONE", bold = true })
+	hl(0, "ErrorMsg", { fg = c.system_red, bg = c.bg, bold = true })
+	hl(0, "Search", { fg = "NONE", bg = c.system_yellow })
+	hl(0, "IncSearch", { fg = "NONE", bg = c.system_orange })
+	hl(0, "Substitute", { fg = "NONE", bg = c.system_orange })
+	hl(0, "MoreMsg", { fg = c.system_orange, bg = "NONE" })
+	hl(0, "Question", { fg = c.system_orange, bg = "NONE" })
+	hl(0, "EndOfBuffer", { fg = c.bg, bg = "NONE" })
+	hl(0, "NonText", { fg = c.bg, bg = "NONE" })
+	hl(0, "TabLine", { fg = c.system_grey_dark, bg = c.line })
+	hl(0, "TabLineSel", { fg = c.fg, bg = c.line })
+	hl(0, "TabLineFill", { fg = c.line, bg = c.line })
+	
+	-- Syntax highlighting
+	hl(0, "Comment", { fg = c.system_grey_dark })
+	hl(0, "Identifier", { fg = c.fg })
+	hl(0, "Function", { fg = c.alt_fg })
+	hl(0, "String", { fg = c.system_green })
+	hl(0, "Keyword", { fg = c.system_purple })
+	hl(0, "Type", { fg = c.system_pink })
+	hl(0, "Constant", { fg = c.system_orange })
+	hl(0, "Statement", { fg = c.system_purple })
+	hl(0, "Special", { fg = c.system_pink })
+	hl(0, "Operator", { fg = c.alt_fg })
 end
 
-return theme
+-- Export the colorscheme module
+local M = {}
+
+M.setup = function()
+	vim.cmd("highlight clear")
+	if vim.fn.exists("syntax_on") then
+		vim.cmd("syntax reset")
+	end
+	vim.g.colors_name = "hqos"
+	set_highlights()
+end
+
+return M

@@ -45,10 +45,10 @@ return {
 }
 --]]
 	{
-		dir = "~/.config/nvim/lua/colors/temple", -- Correct path to your custom theme directory
-		name = "templeos",
+		dir = "~/.config/nvim/lua/colors/hqos", -- Correct path to your custom theme directory
+		name = "hqos",
 		config = function()
-			vim.cmd("colorscheme hqos")
+			require("colors.hqos.hqos").setup()
 		end,
 	},
 }
