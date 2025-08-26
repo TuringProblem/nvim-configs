@@ -13,7 +13,8 @@ return {
 		-- Custom function for definition with preview that opens in new tab
 		local function goto_definition_with_preview()
 			local params = vim.lsp.util.make_position_params()
-			vim.lsp.buf_request(0, "textDocument/definition", params, function(err, result, ctx)
+			local bufnr = vim.api.nvim_get_current_buf()
+			vim.lsp.buf_request(bufnr, "textDocument/definition", params, function(err, result, ctx)
 				if err or not result or vim.tbl_isempty(result) then
 					print("No definition found")
 					return

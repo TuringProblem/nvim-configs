@@ -105,6 +105,7 @@ theme.set_highlights = function()
 	hl(0, "Special", { fg = c.system_pink_alt, bg = "NONE" })
 
 	-- Add all the other highlight groups as needed
+	--
 end
 
 function theme.setup()
@@ -112,9 +113,10 @@ function theme.setup()
 	if vim.fn.exists("syntax_on") then
 		vim.cmd("syntax reset")
 	end
-	
+
 	vim.g.colors_name = "hqos_dark"
 	theme.set_highlights()
 end
 
 return theme
+

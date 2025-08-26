@@ -110,4 +110,5 @@ vim.keymap.set("n", "<leader>nn", M.toggle_notes, { desc = "[F]loating [N]otes" 
 vim.keymap.set("n", "<leader>nr", M.move_right, { desc = "Move floating notes to the right" })
 vim.keymap.set("n", "<leader>nc", M.move_center, { desc = "Center floating notes window" })
 
-return M
+-- Return empty plugin spec since this is just a utility module
+return {}

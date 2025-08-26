@@ -264,9 +264,5 @@ local function setup_keymaps()
 end
 
 setup_keymaps()
--- Return the module
-return {
-	toggle = toggle_terminal,
-	focus = toggle_terminal_focus,
-	move = move_terminal,
-}
+-- Return empty plugin spec since this is just a utility module
+return {}
