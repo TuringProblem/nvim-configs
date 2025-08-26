@@ -1,4 +1,5 @@
 return {
+	--[[{
 
 	"ellisonleao/gruvbox.nvim",
 	priority = 1000,
@@ -42,14 +43,12 @@ return {
 		vim.cmd("colorscheme gruvbox")
 	end,
 }
---[[
+--]]
 	{
-		dir = "~/.config/nvim/lua/colors", -- Correct path to your custom theme directory
-		name = "testColor",
+		dir = "~/.config/nvim/lua/colors/temple", -- Correct path to your custom theme directory
+		name = "templeos",
 		config = function()
-			require("colors.testColor").setup()
-			vim.cmd("colorscheme testColor")
+			vim.cmd("colorscheme templeos")
 		end,
 	},
 }
-]]
