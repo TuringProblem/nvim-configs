@@ -1,0 +1,25 @@
+local colors = {
+	fg = "#EAECEE",
+	alt_fg = "#5A9BFF", 
+	bg = "#1A1B1E",
+	alt_bg = "#2C2E33",
+	cursorline = "#252729",
+	cursor_bg = "#5A9BFF",
+	line = "#252729",
+	system_red = "#FF6B5A",
+	system_yellow = "#FFE4B5",
+	system_green = "#4ECD82",
+	system_green_light = "#1E3E30",
+	system_green_alt = "#60E0A8",
+	system_grey_dark = "#898E92",
+	system_pink = "#FF4F85",
+	system_pink_light = "#3E2233",
+	system_pink_alt = "#FF6BA3",
+	system_pink_dark_alt = "#E83570",
+	system_purple = "#C45AE8",
+	system_purple_light = "#302838",
+	system_orange = "#FF7A3D",
+	system_orange_light = "#3E2E1E",
+}
+
+return colors

@@ -3,8 +3,8 @@ if vim.fn.exists("syntax_on") then
 	vim.cmd("syntax reset")
 end
 
-vim.g.colors_name = "hqos"
+vim.g.colors_name = "hqos_light"
 
 -- Load the theme
-local theme = require("colors.hqos.hqos")
+local theme = require("colors.hqos.hqos_light")
 theme.set_highlights()
