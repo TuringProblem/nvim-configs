@@ -198,6 +198,11 @@ theme.set_highlights = function()
 	hl(0, "yamlBlockMappingKey", { fg = c.blue, bg = "NONE" })
 	hl(0, "tomlTSProperty", { fg = c.blue, bg = "NONE" })
 	hl(0, "@variable.lua", { link = "Variable" })
+
+	-- React
+	hl(0, "@tag", { fg = c._red, bg = "NONE" })
+	hl(0, "@tag.attribute", { fg = c.fg, bg = "NONE" })
+	hl(0, "@tag.delimiter", { fg = c._blue, bg = "NONE" })
 end
 
 function theme.setup()
