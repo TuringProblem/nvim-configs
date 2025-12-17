@@ -90,5 +90,32 @@ return {
 				},
 			},
 		})
+
+		-- configure typst server
+		lspconfig.tinymist.setup({
+			capabilities = capabilities,
+			single_file_support = true,
+			settings = {
+				exportPdf = "onType",
+				serverPath = "",
+			},
+		})
+
+		-- configure python server
+		lspconfig.pyright.setup({
+			capabilities = capabilities,
+			settings = {
+				python = {
+					analysis = {
+						typeCheckingMode = "basic",
+						stubPath = vim.fn.stdpath("data") .. "/lazy/python-type-stubs",
+						extraPaths = {},
+					},
+				},
+				pyright = {
+					disableOrganizeImports = false,
+				},
+			},
+		})
 	end,
 }

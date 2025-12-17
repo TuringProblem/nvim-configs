@@ -1,5 +1,5 @@
 return {
-	--[[{
+  --[[{
 
 	"ellisonleao/gruvbox.nvim",
 	priority = 1000,
@@ -44,20 +44,20 @@ return {
 	end,
 }
 --]]
-	{
-		dir = "~/.config/nvim/lua/colors/hqos",
-		name = "hqos_dark",
-		priority = 1000,
-		config = function()
-			require("colors.hqos.hqos_dark").setup()
-			vim.cmd("colorscheme hqos_dark")
-		end,
-	},
-	{
-		dir = "~/.config/nvim/lua/colors/hqos",
-		name = "hqos_light",
-		config = function()
-			require("colors.hqos.hqos_light").setup()
-		end,
-	},
+  {
+    dir = "~/.config/nvim/lua/colors/hqos",
+    name = "hqos_dark",
+    priority = 1000,
+    config = function()
+      require("colors.hqos.hqos_dark").setup()
+      vim.cmd("colorscheme hqos_dark")
+    end,
+  },
+  {
+    dir = "~/.config/nvim/lua/colors/hqos",
+    name = "hqos_light",
+    config = function()
+      require("colors.hqos.hqos_christmas").setup()
+    end,
+  },
 }

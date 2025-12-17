@@ -44,6 +44,7 @@ return {
 				"bash",
 				"go",
 				"lua",
+				"python",
 				"powershell",
 				"vim",
 				"dockerfile",
