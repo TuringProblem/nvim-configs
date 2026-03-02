@@ -37,8 +37,6 @@ return {
 				"ocaml",
 				"markdown_inline",
 				"swift",
-				"java",
-				"kotlin",
 				"svelte",
 				"graphql",
 				"bash",
@@ -52,6 +50,7 @@ return {
 				"query",
 				"vimdoc",
 				"c",
+				"rust",
 			},
 			incremental_selection = {
 				enable = true,

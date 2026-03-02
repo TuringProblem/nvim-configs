@@ -38,3 +38,8 @@ keymap.set("n", "<leader>tf", "<cmd>tabnew %<CR>", { desc = "Open current buffer
 -- Indentation
 keymap.set("v", "<", "<gv", { desc = "Indent left in visual mode." })
 keymap.set("v", ">", ">gv", { desc = "Indent right in visual mode." })
+
+-- Image Preview
+keymap.set("n", "<leader>ip", "<cmd>ImagePreview<CR>", { desc = "[I]mage [P]review" })
+keymap.set("n", "<leader>iw", "<cmd>ImagePreviewWeb<CR>", { desc = "[I]mage preview [W]eb" })
+keymap.set("n", "<leader>it", "<cmd>ImagePreviewTerminal<CR>", { desc = "[I]mage preview [T]erminal" })

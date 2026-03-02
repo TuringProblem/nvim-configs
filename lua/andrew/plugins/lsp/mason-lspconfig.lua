@@ -16,6 +16,8 @@ return {
 				"emmet_ls",
 				"prismals",
 				"pyright",
+				"rust_analyzer",
+				"jdtls",
 			},
 		})
 	end,
