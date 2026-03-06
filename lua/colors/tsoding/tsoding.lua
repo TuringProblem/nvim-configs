@@ -29,7 +29,7 @@ theme.set_highlights = function()
   hl(0, "CursorColumn", { fg = "NONE", bg = c.cursorline })
   hl(0, "ColorColumn", { fg = "NONE", bg = c.cursorline })
   hl(0, "NormalFloat", { fg = c.fg, bg = c.alt_bg })
-  hl(0, "Visual", { fg = c.bg, bg = c._grey_dark })
+  hl(0, "Visual", { fg = "NONE", bg = c.selection_bg })
   hl(0, "VisualNOS", { fg = "NONE", bg = c.cursorline })
   hl(0, "WarningMsg", { fg = c._red, bg = c.bg })
   hl(0, "DiffText", { fg = c.bg, bg = c._red })
@@ -40,7 +40,7 @@ theme.set_highlights = function()
   hl(0, "PmenuSbar", { fg = "NONE", bg = c.cursorline })
   hl(0, "PmenuThumb", { fg = "NONE", bg = c._grey_dark })
   hl(0, "MatchWord", { fg = "NONE", bg = "NONE", underline = true })
-  hl(0, "MatchParen", { fg = c._yellow, bg = "NONE", underline = true, bold = true })
+  hl(0, "MatchParen", { fg = "NONE", bg = c.bracket_match, bold = true })
   hl(0, "MatchWordCur", { fg = "NONE", bg = "NONE", underline = true })
   hl(0, "MatchParenCur", { fg = "NONE", bg = "NONE", underline = true })
   hl(0, "Cursor", { fg = c.bg, bg = c._yellow })
@@ -53,8 +53,8 @@ theme.set_highlights = function()
   hl(0, "Directory", { fg = c._green, bg = "NONE" })
   hl(0, "SpecialKey", { fg = c.alt_fg, bg = "NONE", bold = true })
   hl(0, "ErrorMsg", { fg = c._red, bg = c.bg, bold = true })
-  hl(0, "Search", { fg = c.bg, bg = c._yellow })
-  hl(0, "IncSearch", { fg = c.bg, bg = c._yellow })
+  hl(0, "Search", { fg = "NONE", bg = c.find_match })
+  hl(0, "IncSearch", { fg = "NONE", bg = c.find_match })
   hl(0, "Substitute", { fg = c.bg, bg = c._yellow })
   hl(0, "MoreMsg", { fg = c._yellow, bg = "NONE" })
   hl(0, "Question", { fg = c._yellow, bg = "NONE" })
@@ -73,7 +73,7 @@ theme.set_highlights = function()
   hl(0, "Float", { fg = c.fg, bg = "NONE" })
   hl(0, "Boolean", { fg = c._yellow, bg = "NONE" })     -- Yellow for keywords
   hl(0, "Constant", { fg = c.fg, bg = "NONE" })
-  hl(0, "Type", { fg = c._military_green, bg = "NONE" }) -- Military green for types
+  hl(0, "Type", { fg = c._type_color, bg = "NONE" }) -- Types use new color from theme
   hl(0, "Function", { fg = c.fg, bg = "NONE" })         -- Keep functions simple
   hl(0, "Keyword", { fg = c._yellow, bg = "NONE" })     -- Yellow keywords
   hl(0, "Conditional", { fg = c._yellow, bg = "NONE" }) -- Yellow conditionals
@@ -82,11 +82,11 @@ theme.set_highlights = function()
   hl(0, "PreProc", { fg = c._yellow, bg = "NONE" })     -- Yellow preprocessor
   hl(0, "Include", { fg = c._yellow, bg = "NONE" })
   hl(0, "Exception", { fg = c._yellow, bg = "NONE" })
-  hl(0, "StorageClass", { fg = c._military_green, bg = "NONE" })
-  hl(0, "Structure", { fg = c._military_green, bg = "NONE" })
-  hl(0, "Typedef", { fg = c._military_green, bg = "NONE" })
+  hl(0, "StorageClass", { fg = c._type_color, bg = "NONE" })
+  hl(0, "Structure", { fg = c._type_color, bg = "NONE" })
+  hl(0, "Typedef", { fg = c._type_color, bg = "NONE" })
   hl(0, "Define", { fg = c._yellow, bg = "NONE" })
-  hl(0, "Macro", { fg = c._yellow, bg = "NONE" })
+  hl(0, "Macro", { fg = c._type_color, bg = "NONE" }) -- Macros use type color
   hl(0, "Debug", { fg = c._red, bg = "NONE" })
   hl(0, "Title", { fg = c.alt_fg, bg = "NONE", bold = true })
   hl(0, "Label", { fg = c.fg, bg = "NONE" })
@@ -104,6 +104,17 @@ theme.set_highlights = function()
   hl(0, "Identifier", { fg = c.fg, bg = "NONE" })
   hl(0, "PreCondit", { fg = c._yellow, bg = "NONE" })
   hl(0, "Special", { fg = c.fg, bg = "NONE" })
+
+  -- Additional editor highlights for better VS Code theme match
+  hl(0, "CurSearch", { fg = "NONE", bg = c.find_match })
+  hl(0, "WordUnderCursor", { fg = "NONE", bg = c.word_highlight })
+  hl(0, "LspReferenceText", { fg = "NONE", bg = c.word_highlight })
+  hl(0, "LspReferenceRead", { fg = "NONE", bg = c.word_highlight })
+  hl(0, "LspReferenceWrite", { fg = "NONE", bg = c.word_highlight })
+
+  -- Namespace highlighting
+  hl(0, "Namespace", { fg = c._namespace, bg = "NONE" })
+  hl(0, "@namespace", { fg = c._namespace, bg = "NONE" })
 
   -- Telescope
   hl(0, "TelescopeSelection", { fg = "NONE", bg = c.cursorline })

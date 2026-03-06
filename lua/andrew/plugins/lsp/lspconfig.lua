@@ -142,5 +142,10 @@ return {
 			},
 		})
 
+		-- configure zig server
+		lspconfig.zls.setup({
+			capabilities = capabilities,
+		})
+
 	end,
 }
