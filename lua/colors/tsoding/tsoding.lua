@@ -73,7 +73,7 @@ theme.set_highlights = function()
   hl(0, "Float", { fg = c.fg, bg = "NONE" })
   hl(0, "Boolean", { fg = c._yellow, bg = "NONE" })     -- Yellow for keywords
   hl(0, "Constant", { fg = c.fg, bg = "NONE" })
-  hl(0, "Type", { fg = c._type_color, bg = "NONE" }) -- Types use new color from theme
+  hl(0, "Type", { fg = c._type_color, bg = "NONE" })    -- Types use new color from theme
   hl(0, "Function", { fg = c.fg, bg = "NONE" })         -- Keep functions simple
   hl(0, "Keyword", { fg = c._yellow, bg = "NONE" })     -- Yellow keywords
   hl(0, "Conditional", { fg = c._yellow, bg = "NONE" }) -- Yellow conditionals
@@ -160,10 +160,10 @@ function theme.setup()
   end
 
   vim.g.colors_name = "tsoding"
-  
+
   -- Set cursor to be yellow caret
   vim.opt.guicursor = "n-v-c:block-Cursor,i-ci-ve:ver25-Cursor,r-cr:hor20-Cursor,o:hor50-Cursor"
-  
+
   theme.set_highlights()
 end
 

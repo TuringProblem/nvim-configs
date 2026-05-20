@@ -5,27 +5,27 @@ local opt = vim.opt
 opt.relativenumber = true
 opt.number = true
 
-opt.relativenumber = false
-opt.number = false
+opt.relativenumber = true
+opt.number = true
 
 -- tabs & indentations
-opt.tabstop = 4 -- 4 space for tabs (prettier default)
+opt.tabstop = 4    -- 4 space for tabs (prettier default)
 opt.shiftwidth = 4 -- 4 spaces for indent width
 opt.softtabstop = 4
 
-opt.tabstop = 2 -- 2 space for tabs (prettier default)
-opt.shiftwidth = 2 -- 2 spaces for indent width
+opt.tabstop = 2       -- 2 space for tabs (prettier default)
+opt.shiftwidth = 2    -- 2 spaces for indent width
 
-opt.expandtab = true -- expand tab to spaces
+opt.expandtab = true  -- expand tab to spaces
 opt.autoindent = true -- copy indent from current line when starting new one
-opt.scrolloff = 20 -- Centers the text when you  type outside of the vertical bounds
+opt.scrolloff = 20    -- Centers the text when you  type outside of the vertical bounds
 opt.sidescrolloff = 8 -- Centers the text when you type outside of the horizontal bounds
 
 opt.wrap = false
 
 -- search settings
 opt.ignorecase = true -- ignore case when searching
-opt.smartcase = true -- if you include mixed case in search, assumes you want case-sensitmart/ve
+opt.smartcase = true  -- if you include mixed case in search, assumes you want case-sensitmart/ve
 opt.cursorline = true
 
 -- turn on termguicolors for tokyonight colorscheme to work

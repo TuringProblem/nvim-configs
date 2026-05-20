@@ -147,5 +147,10 @@ return {
 			capabilities = capabilities,
 		})
 
+		-- configure racket server (install via: raco pkg install racket-langserver)
+		lspconfig.racket_langserver.setup({
+			capabilities = capabilities,
+		})
+
 	end,
 }
