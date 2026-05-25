@@ -42,4 +42,4 @@ luac.out
 *.html
 
 .html
-
+./lua/colors/output.html
