@@ -1,0 +1,55 @@
+local purple = require("./purple.lua")
+
+local magenta_shade = {
+  african_violet = "#",
+  amaranth = "#",
+  amaranth_purple = purple.purple_shades.amaranth_purple,
+  baker_miller_pink = "#",
+  carmine = "#",
+  cerise = "#",
+  chinese_violet = "#",
+  crimson = "#",
+  dark_magenta = "#",
+  eggplant = "#",
+
+  electric_purple = "#",
+  english_violet = "#",
+  fandango = "#",
+  finn = "#",
+  fuchsia = "#",
+  hot_magenta = "#",
+  lilac = "#",
+  magenta_dye = "#",
+  magenta_cmyk = "#",
+  magenta_rgb = "#",
+
+  magenta_crayola = "#",
+  magenta_pantone = "#",
+  magenta_haze = "#",
+  mulberry = "#",
+  orchid = "#",
+  patriarch = "#",
+  plum = "#",
+  psychedelic_purple = "#",
+  purple = "#",
+  purple_pizzazz = "#",
+
+  quinacridone_magenta = "#",
+  raspberry = "#",
+  razzle_dazzle_rose = "#",
+  red_violet = "#",
+  rose = "#",
+  rose_pink = "#",
+  rose_quartz = "#",
+  shocking_pink = "#",
+  shocking_pink_crayola = "#",
+  steel_pink = "#",
+
+  sky_magenta = "#",
+  telemagenta = "#",
+  thistle_crayola = "#",
+  violet_jtc = "#",
+  violet_web_color = "#",
+}
+
+return magenta_shade

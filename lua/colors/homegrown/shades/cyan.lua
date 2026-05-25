@@ -1,0 +1,48 @@
+local cyan_shade = {
+  atice_blue = "#",
+  aqua = "#",
+  aquamarine = "#",
+  azure = "#",
+  azure_web = "#",
+  blue_green = "#",
+  capri = "#",
+  celeste = "#",
+  cerulean = "#",
+
+  cyan_srgb = "#",
+  dark_cyan = "#",
+  electric_blue = "#",
+  fluorescent_cyan = "#",
+  jungle_green = "#",
+  keppel = "#",
+  ice_blue = "#",
+  light_blue = "#",
+  light_cyan = "#",
+  light_sea_green = "#",
+
+  mightnight_green = "#",
+  might_green = "#",
+  mint = "#",
+  moonstone = "#",
+  myrtle_green = "#",
+  olo = "#",
+  pacific_cyan = "#",
+  persian_green = "#",
+  process_cyan = "#",
+  riptide = "#",
+
+  robin_egg_blue = "#",
+  sea_green = "#",
+  skobeloff = "#",
+  sky_blue_crayola = "#",
+  spring_green = "#",
+  teal = "#",
+  tiffany_blue = "#",
+  turquoise = "#",
+  verdigris = "#",
+  vivid_sky_blue = "#",
+
+  zomp = "#",
+}
+
+return cyan_shade

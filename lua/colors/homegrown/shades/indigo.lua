@@ -1,0 +1,38 @@
+local indigo_shade = {
+  crayola_purple = "#6A35CE",
+  blue_bell = "#",
+  blue_violet = "#",
+  blue_violet_crayola = "#",
+  celestial_blue = "#",
+  denim = "#",
+  electric_indigo = "#",
+  electric_ultramarine = "#",
+  imperial_blue = "#",
+  indigo = "#",
+
+  indigo_colorwheel = "#",
+  indigo_dye = "#",
+  iridescent_indigo = "#",
+  iron_indigo = "#",
+  lavender_mist = "#",
+  maximum_blue_purple = "#",
+  middle_blue_purple = "#",
+  midnight_blue = "#",
+  moonlit_pond = "#",
+
+  ocean_blue_pearl = "#",
+  periwinkle = "#",
+  periwinkle_crayola = "#",
+  plump_purple = "#",
+  purple_heart = "#",
+  purple_mountain_majesty = "#",
+  royal_purple_crayola = "#",
+  tripoical_indigo = "#",
+  ultramarine = "#",
+  ultramarine_blue = "#",
+
+  violet_blue_crayola = "#",
+  web_color_indigo = "#",
+  web_safe_indigo = "#",
+}
+return indigo_shade
