@@ -1,5 +1,3 @@
-local black_shade = require("./black.lua")
-
 local gray_shade = {
   ash_gray = "#B2BEB5",
   battleship_gray = "#848482",
