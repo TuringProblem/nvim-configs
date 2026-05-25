@@ -24,10 +24,22 @@ return {
             },
             pickers = {
                 lsp_definitions = {
-                    theme = "dropdown", -- Optional: customize theme for definitions
+                    theme = "dropdown",
+                    reuse_win = true,
+                    show_line = false,
                 },
                 lsp_references = {
-                    theme = "ivy", -- Optional: customize theme for references
+                    theme = "ivy",
+                    reuse_win = true,
+                    show_line = false,
+                },
+                lsp_implementations = {
+                    reuse_win = true,
+                    show_line = false,
+                },
+                lsp_type_definitions = {
+                    reuse_win = true,
+                    show_line = false,
                 },
             },
         })
