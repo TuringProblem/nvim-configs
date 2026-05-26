@@ -4,6 +4,8 @@ local theme = {}
 
 theme.set_highlights = function()
   f(0, "Normal", { fg = c.white.azure_white, bg = c.black.dim_gray })
+  f(0, "SignColumn", { fg = c.purple[1].byzantium, bg = c.black.dim_gray })
+  f(0, "Comment", { fg = c.purple[2].dark_purple, bg = c.white.almond })
 end
 
 function theme.setup()
