@@ -1,6 +1,6 @@
-local gray_shade = require("colors.homegrown.shades.gray")
-local green_shade = require("colors.homegrown.shades.green")
-local purple_shade = require("colors.homegrown.shades.purple")
+local gray_shade = require("colors.homegrown.shades.gray.gray")
+local green_shade = require("colors.homegrown.shades.green.green")
+local purple_shade = require("colors.homegrown.shades.purple.purple")
 local black = "#000000"
 
 local black_shade = {
