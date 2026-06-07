@@ -1,9 +1,19 @@
 local c = require("colors.homegrown.palette")
+
+
+local backgroundColor = function()
+  return { fg = c.white.azure_white, bg = c.black.russian_violet, italic = true }
+end
+
+local errorColor = function()
+  return { fg = c.red.chili_red, bg = c.gray.dim_gray }
+end
+
 local f = vim.api.nvim_set_hl
 local theme = {}
 
 theme.set_highlights = function()
-  f(0, "Normal", { fg = c.white.azure_white, bg = c.black.russian_violet })
+  f(0, "Normal", backgroundColor())
   f(0, "SignColumn", { fg = c.purple[1].byzantium, bg = c.black.dim_gray })
 
   -- Code - Tsoding style: simple and clean
@@ -16,20 +26,20 @@ theme.set_highlights = function()
   f(0, "Boolean", {})
   f(0, "Constant", {})
   f(0, "Type", { fg = c.brown.desert_sand })
-  f(0, "Function", {})
-  f(0, "Keyword", {})
+  f(0, "Function", { fg = c.blue.lavender })
+  f(0, "Keyword", { fg = c.green.apple_green })
   f(0, "Conditional", {})
   f(0, "Repeat", {})
   f(0, "Operator", {})
   f(0, "PreProc", {})
   f(0, "Include", {})
-  f(0, "Exception", {})
+  f(0, "Exception", { fg = c.red.chili_red })
   f(0, "StorageClass", {})
   f(0, "Structure", {})
   f(0, "Typedef", {})
   f(0, "Define", {})
   f(0, "Macro", {})
-  f(0, "Debug", {})
+  f(0, "Debug", errorColor())
   f(0, "Title", {})
   f(0, "Label", {})
   f(0, "SpecialChar", {})
@@ -40,8 +50,8 @@ theme.set_highlights = function()
   f(0, "Italic", {})
   f(0, "Underlined", {})
   f(0, "Ignore", {})
-  f(0, "Todo", {})
-  f(0, "Error", {})
+  f(0, "Todo", errorColor())
+  f(0, "Error", errorColor())
   f(0, "Statement", {})
   f(0, "Identifier", {})
   f(0, "PreCondit", {})
