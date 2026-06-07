@@ -1,4 +1,4 @@
-local purple = require("./purple.lua")
+-- local purple = require("colors.homegrown.shades.purple")
 
 local magenta_shade = {
   african_violet = "#B284BE",

@@ -1,5 +1,5 @@
 local indigo_shade = {
-  crayola_purple = "#6A35CE"
+  crayola_purple = "#6A35CE",
   blue_bell = "#9999CC",
   blue_violet = "#8A2BE2",
   blue_violet_crayola = "#6456B7",
