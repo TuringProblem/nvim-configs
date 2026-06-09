@@ -2,7 +2,7 @@ local c = require("colors.homegrown.palette")
 
 
 local backgroundColor = function()
-  return { fg = c.white.azure_white, bg = c.black.russian_violet, italic = true }
+  return { fg = c.white.azure_white, bg = c.black.rich_black, italic = true }
 end
 
 local errorColor = function()
@@ -12,23 +12,30 @@ end
 local f = vim.api.nvim_set_hl
 local theme = {}
 
+
+local midnight_sky = "#008378"
+local comments = "#2CACCF"
+-- what color should I make it?
+
+-- alight... what is your pallet
 -- I need to fix this fucking color scheme
 theme.set_highlights = function()
   f(0, "Normal", backgroundColor())
   f(0, "SignColumn", { fg = c.purple[1].byzantium, bg = c.black.dim_gray })
 
+  f(0, "Cursor", { fg = c.black.vantablack, bg = c.cursor_bg })
   -- Code - Tsoding style: simple and clean
-  f(0, "Comment", { fg = c.green.apple_green, bg = c.gray.dim_gray, italic = true })
+  f(0, "Comment", { fg = comments, italic = true })
   f(0, "Variable", { fg = c.blue.lavender })
-  f(0, "String", { fg = c.orange.amber })
+  f(0, "String", { fg = c.blue.moroccan_blue })
   f(0, "Character", {})
   f(0, "Number", {})
   f(0, "Float", {})
   f(0, "Boolean", {})
   f(0, "Constant", {})
   f(0, "Type", { fg = c.brown.desert_sand })
-  f(0, "Function", { fg = c.blue.lavender })
-  f(0, "Keyword", { fg = c.green.apple_green })
+  f(0, "Function", { fg = c.blue.turquoise })
+  f(0, "Keyword", { fg = midnight_sky, italic = true })
   f(0, "Conditional", {})
   f(0, "Repeat", {})
   f(0, "Operator", {})
@@ -57,6 +64,8 @@ theme.set_highlights = function()
   f(0, "Identifier", {})
   f(0, "PreCondit", {})
   f(0, "Special", {})
+
+  --
 end
 
 function theme.setup()

@@ -46,10 +46,10 @@ return {
 --]]
   {
     dir = "~/.config/nvim/lua/colors/tsoding",
-    name = "tsoding",
+    name = "midnight-coder",
     priority = 1000,
     config = function()
-      require("colors.tsoding.tsoding").setup()
+      require("colors.homegrown.themes.midnight-coder.midnight-coder").setup()
     end,
   },
 }
