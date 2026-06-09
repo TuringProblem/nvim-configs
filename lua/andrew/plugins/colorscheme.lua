@@ -46,10 +46,10 @@ return {
 --]]
   {
     dir = "~/.config/nvim/lua/colors/tsoding",
-    name = "west-coast-sunset",
+    name = "midnight-coder",
     priority = 1000,
     config = function()
-      require("colors.homegrown.themes.sunset.west-coast.west-coast-sunset").setup()
+      require("colors.homegrown.themes.midnight-coder.midnight-coder").setup()
     end,
   },
 }
