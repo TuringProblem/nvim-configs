@@ -17,6 +17,16 @@ return {
     },
     -- This function will be called to determine the root of the typst project
     get_root = function(path_of_main_file)
+      -- Walk up to the repo root (.git) so relative imports that reach
+      -- into shared/ or lib/ dirs stay inside the compiler's project root.
+      local found = vim.fs.find({ '.git' }, {
+        upward = true,
+        path = vim.fs.dirname(path_of_main_file),
+        type = 'directory',
+      })[1]
+      if found then
+        return vim.fs.dirname(found)
+      end
       return vim.fn.fnamemodify(path_of_main_file, ':p:h')
     end,
     -- This function will be called to determine the main file of the typst

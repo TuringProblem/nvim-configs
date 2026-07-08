@@ -11,6 +11,10 @@ local errorColor = function()
   return { fg = c.red.chili_red, bg = c.gray.dim_gray }
 end
 
+local custom = function(f, color)
+  return { fg = f(color) }
+end
+
 local midnight_igloo = function()
   return { fg = comments, italic = true }
 end
@@ -22,7 +26,6 @@ end
 local midnight_skyrizi = function()
   return { fg = c.green.jade, bg = c.green.olo, italic = true }
 end
-
 
 
 
@@ -43,13 +46,13 @@ theme.set_highlights = function()
   f(0, "Comment", midnight_igloo())
   f(0, "Variable", { fg = c.blue.lavender })
   f(0, "String", { fg = c.blue.moroccan_blue })
-  f(0, "Character", {})
+  f(0, "Character", { fg = c.blue.bondi_blue })
   f(0, "Number", {})
   f(0, "Float", {})
-  f(0, "Boolean", {})
-  f(0, "Constant", {})
+  f(0, "Boolean", { fg = c.magenta.chinese_violet })
+  f(0, "Constant", { fg = c.green.magic_mint })
   f(0, "Type", { fg = c.brown.desert_sand })
-  f(0, "Function", { fg = c.blue.turquoise })
+  f(0, "Function", { fg = c.blue.turquoise, italic = true })
   f(0, "Keyword", { fg = midnight_sky, italic = true })
   f(0, "Conditional", midnight_skyrizi())
   f(0, "Repeat", {})
@@ -61,7 +64,7 @@ theme.set_highlights = function()
   f(0, "Structure", {})
   f(0, "Typedef", {})
   f(0, "Define", {})
-  f(0, "Macro", {})
+  f(0, "Macro", { fg = c.red.tea_rose })
   f(0, "Debug", errorColor())
   f(0, "Title", {})
   f(0, "Label", {})

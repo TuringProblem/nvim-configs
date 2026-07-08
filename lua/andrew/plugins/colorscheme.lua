@@ -52,4 +52,10 @@ return {
       require("colors.homegrown.themes.midnight-coder.midnight-coder").setup()
     end,
   },
+  --[[
+  {
+    dir = "~/.config/nvim/lua/colors/temple/templeos.lua"
+
+  },
+  ]]
 }
