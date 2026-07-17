@@ -15,4 +15,7 @@ require("lazy").setup({ { import = "andrew.plugins" }, { import = "andrew.plugin
 	change_detection = {
 		notify = false,
 	},
+	rocks = {
+		enabled = false, -- no plugins need luarocks; silences hererocks checkhealth errors
+	},
 })

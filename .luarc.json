@@ -1,1 +1,19 @@
-{"diagnostics":{"globals":["turtle","redstone","peripheral","fs","http","os","term","io","textutils","colors","colours","keys","vector","paintutils","window","multishell","shell","help","parallel","settings","gps","pocket","disk","print","write","sleep","read"]},"runtime":{"version":"Lua 5.3"},"workspace":{"checkThirdParty":false,"library":["\/Users\/andrewwellington\/.local\/share\/nvim\/craftos-pc\/defs\/library"]}}
+{
+  "diagnostics": {
+    "globals": [
+      "vim",
+      "turtle", "redstone", "peripheral", "fs", "http", "os", "term", "io",
+      "textutils", "colors", "colours", "keys", "vector", "paintutils",
+      "window", "multishell", "shell", "help", "parallel", "settings",
+      "gps", "pocket", "disk", "print", "write", "sleep", "read"
+    ]
+  },
+  "runtime": { "version": "Lua 5.3" },
+  "workspace": {
+    "checkThirdParty": false,
+    "library": [
+      "$VIMRUNTIME/lua",
+      "/Users/andrewwellington/.local/share/nvim/craftos-pc/defs/library"
+    ]
+  }
+}

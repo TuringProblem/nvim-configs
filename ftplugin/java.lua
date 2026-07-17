@@ -114,7 +114,7 @@ local config = {
 	init_options = {
 		bundles = {}
 	},
-	capabilities = require("cmp_nvim_lsp").default_capabilities(),
+	capabilities = vim.lsp.protocol.make_client_capabilities(),
 	on_attach = function(client, bufnr)
 		-- Java-specific keybindings
 		local opts = { buffer = bufnr, silent = true }

@@ -1,20 +1,21 @@
 vim.cmd("let g:netrw_liststyle = 3")
 
+-- disable unused remote-plugin providers (silences checkhealth warnings)
+vim.g.loaded_node_provider = 0
+vim.g.loaded_perl_provider = 0
+vim.g.loaded_python3_provider = 0
+vim.g.loaded_ruby_provider = 0
+
 local opt = vim.opt
 
-opt.relativenumber = true
-opt.number = true
+opt.relativenumber = false
+opt.number = false
 
-opt.relativenumber = true
-opt.number = true
 
 -- tabs & indentations
-opt.tabstop = 4    -- 4 space for tabs (prettier default)
-opt.shiftwidth = 4 -- 4 spaces for indent width
-opt.softtabstop = 4
-
 opt.tabstop = 2       -- 2 space for tabs (prettier default)
 opt.shiftwidth = 2    -- 2 spaces for indent width
+opt.softtabstop = 2
 
 opt.expandtab = true  -- expand tab to spaces
 opt.autoindent = true -- copy indent from current line when starting new one
@@ -32,18 +33,12 @@ opt.cursorline = true
 -- (have to use iterm2 or any other true color terminal)
 opt.termguicolors = true
 --opt.background = "dark" -- colorschemes that can be light or dark will be made dark
-opt.signcolumn = "yes" -- show sign column so that text doesn't shift
+opt.signcolumn = "yes"              -- show sign column so that text doesn't shift
 
--- backspace
-opt.backspace = "indent,eol,start" -- allow backspace on indent, end of line, or mode start of position
-
--- clipboard
+opt.backspace = "indent,eol,start"  -- allow backspace on indent, end of line, or mode start of position
 opt.clipboard:append("unnamedplus") -- use system clipboard as default register
-
--- split windows
-
-opt.splitright = true -- split veritcal window to the right
-opt.splitbelow = true -- split horizontal window to the bottom
+opt.splitright = true               -- split veritcal window to the right
+opt.splitbelow = true               -- split horizontal window to the bottom
 
 vim.cmd("hi clear")
 
