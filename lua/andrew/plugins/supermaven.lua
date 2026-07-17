@@ -1,7 +1,7 @@
 return {
   {
     "supermaven-inc/supermaven-nvim",
-    event = "BufRead", -- or any appropriate lazy-loading event
+    event = "VeryLazy", -- fires regardless of whether a file buffer was opened
     config = function()
       require("supermaven-nvim").setup({})
     end,
