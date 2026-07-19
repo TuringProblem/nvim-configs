@@ -21,21 +21,21 @@ return {
 					vim.lsp.completion.enable(true, client.id, ev.buf, { autotrigger = true })
 				end
 
-				-- set keybinds
-				opts.desc = "Show LSP references"
-				keymap.set("n", "gR", vim.lsp.buf.references, opts)
+				-- LSP navigation (Telescope-powered, buffer-local so only active when a server attaches)
+				opts.desc = "Go to definition"
+				keymap.set("n", "gd", "<cmd>Telescope lsp_definitions<cr>", opts)
+
+				opts.desc = "Find references"
+				keymap.set("n", "gr", "<cmd>Telescope lsp_references<cr>", opts)
+
+				opts.desc = "Go to implementation"
+				keymap.set("n", "gi", "<cmd>Telescope lsp_implementations<cr>", opts)
+
+				opts.desc = "Go to type definition"
+				keymap.set("n", "gt", "<cmd>Telescope lsp_type_definitions<cr>", opts)
 
 				opts.desc = "Go to declaration"
-				keymap.set("n", "gD", vim.lsp.buf.declaration, opts) -- go to declaration
-
-				opts.desc = "Show LSP definitions"
-				keymap.set("n", "gd", vim.lsp.buf.definition, opts)
-
-				opts.desc = "Show LSP implementations"
-				keymap.set("n", "gi", vim.lsp.buf.implementation, opts) -- show lsp implementations
-
-				opts.desc = "Show LSP type definitions"
-				keymap.set("n", "gt", vim.lsp.buf.type_definition, opts) -- show lsp type definitions
+				keymap.set("n", "gD", vim.lsp.buf.declaration, opts) -- no telescope picker for declaration
 
 				opts.desc = "See available code actions"
 				keymap.set({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action, opts) -- see available code actions, in visual mode will apply to selection
