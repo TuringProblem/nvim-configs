@@ -5,16 +5,19 @@ vim.g.loaded_node_provider = 0
 vim.g.loaded_perl_provider = 0
 vim.g.loaded_python3_provider = 0
 vim.g.loaded_ruby_provider = 0
+vim.g.loaded_netrw = 1
+vim.g.loaded_netrwPlugin = 1
 
 local opt = vim.opt
 
-opt.relativenumber = false
-opt.number = false
+opt.relativenumber = true
+opt.number = true
+opt.swapfile = false
 
 
 -- tabs & indentations
-opt.tabstop = 2       -- 2 space for tabs (prettier default)
-opt.shiftwidth = 2    -- 2 spaces for indent width
+opt.tabstop = 2    -- 2 space for tabs (prettier default)
+opt.shiftwidth = 2 -- 2 spaces for indent width
 opt.softtabstop = 2
 
 opt.expandtab = true  -- expand tab to spaces
