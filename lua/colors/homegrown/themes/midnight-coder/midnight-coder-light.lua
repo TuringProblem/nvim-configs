@@ -15,45 +15,45 @@
 
 local p = {
   -- surfaces
-  paper      = "#F2F0EA", -- Normal bg
-  paper_dim  = "#E9E7DF", -- floats, pmenu, statusline
-  paper_deep = "#DFDDD3", -- pmenu sel, tabline fill
-  cursorline = "#EAE8E0",
-  visual     = "#D3E2E6", -- cool tint so selection separates from cursorline
-  border     = "#C6C8C0",
+  paper       = "#F2F0EA", -- Normal bg
+  paper_dim   = "#E9E7DF", -- floats, pmenu, statusline
+  paper_deep  = "#DFDDD3", -- pmenu sel, tabline fill
+  cursorline  = "#EAE8E0",
+  visual      = "#D3E2E6", -- cool tint so selection separates from cursorline
+  border      = "#C6C8C0",
 
   -- ink
-  ink        = "#1B2733", -- fg  (13.3:1)
-  ink_soft   = "#4A5C6A", -- operators, delimiters that must still read (6.1:1)
-  ink_mute   = "#7A8894", -- line numbers, whitespace, ignore
-  ink_ghost  = "#B4BAC0", -- indent guides, end-of-buffer
+  ink         = "#1B2733", -- fg  (13.3:1)
+  ink_soft    = "#4A5C6A", -- operators, delimiters that must still read (6.1:1)
+  ink_mute    = "#7A8894", -- line numbers, whitespace, ignore
+  ink_ghost   = "#B4BAC0", -- indent guides, end-of-buffer
 
   -- accents (dark-theme hue -> darkened light-theme twin)
-  cyan       = "#5E8496", -- comments        <- #2CACCF
-  teal       = "#00786E", -- keywords        <- #008378
-  teal_deep  = "#0A5C4C", -- conditional fg  <- jade
-  teal_wash  = "#DBEDE7", -- conditional bg  <- olo
-  aqua       = "#0A6E8A", -- functions       <- turquoise
-  aqua_alt   = "#0A6E92", -- characters      <- bondi blue
-  blue       = "#2361B8", -- strings         <- moroccan blue
-  violet     = "#7A3EA8", -- variables       <- lavender
-  magenta    = "#9A3E86", -- booleans        <- chinese violet
-  jade       = "#0B7A5B", -- constants       <- magic mint
-  sienna     = "#9A5B2D", -- types           <- desert sand
-  sand       = "#8A7A6A", -- delimiters      <- almond
-  amber      = "#A34D06", -- numbers         (new: keeps the cool tones honest)
-  rose       = "#B5485C", -- macros          <- tea rose
-  red        = "#B3261E", -- errors          <- chili red
-  red_wash   = "#F6DCD8",
-  green      = "#1F7A3D", -- diff add / git
-  green_wash = "#DDEEDF",
-  yellow     = "#8A6A00", -- warnings
+  cyan        = "#5E8496", -- comments        <- #2CACCF
+  teal        = "#00786E", -- keywords        <- #008378
+  teal_deep   = "#0A5C4C", -- conditional fg  <- jade
+  teal_wash   = "#DBEDE7", -- conditional bg  <- olo
+  aqua        = "#0A6E8A", -- functions       <- turquoise
+  aqua_alt    = "#0A6E92", -- characters      <- bondi blue
+  blue        = "#2361B8", -- strings         <- moroccan blue
+  violet      = "#7A3EA8", -- variables       <- lavender
+  magenta     = "#9A3E86", -- booleans        <- chinese violet
+  jade        = "#0B7A5B", -- constants       <- magic mint
+  sienna      = "#9A5B2D", -- types           <- desert sand
+  sand        = "#8A7A6A", -- delimiters      <- almond
+  amber       = "#A34D06", -- numbers         (new: keeps the cool tones honest)
+  rose        = "#B5485C", -- macros          <- tea rose
+  red         = "#B3261E", -- errors          <- chili red
+  red_wash    = "#F6DCD8",
+  green       = "#1F7A3D", -- diff add / git
+  green_wash  = "#DDEEDF",
+  yellow      = "#8A6A00", -- warnings
   yellow_wash = "#F2E9CC",
-  blue_wash  = "#DCE6F4",
+  blue_wash   = "#DCE6F4",
 }
 
 local backgroundColor = function()
-  return { fg = p.ink, bg = p.paper }
+  return { fg = p.ink, bg = p.paper_deep }
 end
 
 local errorColor = function()
@@ -65,7 +65,7 @@ local midnight_igloo = function()
 end
 
 local midnight_java = function()
-  return { fg = p.teal, bg = p.paper_dim }
+  return { fg = p.teal, bg = p.teal_wash }
 end
 
 local midnight_skyrizi = function()
@@ -166,7 +166,7 @@ theme.set_highlights = function()
   f(0, "Title", { fg = p.teal, bold = true })
   f(0, "Label", { fg = p.violet })
   f(0, "SpecialChar", { fg = p.rose })
-  f(0, "Delimiter", { fg = p.sand })
+  f(0, "Delimiter", { fg = p.blue_wash })
   f(0, "SpecialComment", { fg = p.cyan, bold = true, italic = true })
   f(0, "Tag", { fg = p.aqua })
   f(0, "Bold", { bold = true })
@@ -295,21 +295,21 @@ theme.set_highlights = function()
   f(0, "QuickScopeSecondary", { fg = p.amber, underline = true })
 
   -- Telescope
-  f(0, "TelescopeNormal", { fg = p.ink, bg = p.paper_dim })
+  f(0, "TelescopeNormal", { fg = p.ink, bg = p.ink })
   f(0, "TelescopeBorder", midnight_java())
   f(0, "TelescopeSelection", { fg = p.ink, bg = p.visual, bold = true })
   f(0, "TelescopeSelectionCaret", { fg = p.teal, bg = p.visual })
   f(0, "TelescopeMultiSelection", { fg = p.violet, bg = p.visual })
   f(0, "TelescopeMatching", { fg = p.amber, bold = true })
   f(0, "TelescopePromptNormal", { fg = p.ink, bg = p.paper_deep })
-  f(0, "TelescopePromptBorder", { fg = p.paper_deep, bg = p.paper_deep })
+  f(0, "TelescopePromptBorder", { fg = p.paper_deep, bg = p.ink })
   f(0, "TelescopePromptTitle", { fg = p.paper, bg = p.teal, bold = true })
   f(0, "TelescopePromptPrefix", { fg = p.teal, bg = p.paper_deep })
   f(0, "TelescopePromptCounter", { fg = p.ink_mute, bg = p.paper_deep })
   f(0, "TelescopeResultsTitle", { fg = p.paper_dim, bg = p.paper_dim })
   f(0, "TelescopeResultsBorder", { fg = p.paper_dim, bg = p.paper_dim })
   f(0, "TelescopePreviewTitle", { fg = p.paper, bg = p.violet, bold = true })
-  f(0, "TelescopePreviewBorder", { fg = p.paper_dim, bg = p.paper_dim })
+  f(0, "TelescopePreviewBorder", { fg = p.paper_dim, bg = p.ink })
   f(0, "TelescopePreviewNormal", { bg = p.paper_dim })
   f(0, "TelescopePreviewHyphen", { fg = p.sand })
 

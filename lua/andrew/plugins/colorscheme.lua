@@ -46,13 +46,21 @@ return {
 --]]
   {
     dir = "~/.config/nvim/lua/colors/tsoding",
+    name = "hqos-dark",
+    priority = 1000,
+    config = function()
+      require("colors.hqos.hqos_dark").setup()
+    end,
+  },
+  --[[
+  {
+    dir = "~/.config/nvim/lua/colors/tsoding",
     name = "midnight-coder",
     priority = 1000,
     config = function()
       require("colors.homegrown.themes.midnight-coder.midnight-coder").setup()
     end,
   },
-  --[[
   {
     dir = "~/.config/nvim/lua/colors/temple/templeos.lua"
 

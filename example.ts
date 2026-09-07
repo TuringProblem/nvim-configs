@@ -21,8 +21,6 @@ const something = ({ peoples }: data) => {
 };
 
 
-
-
 const myPeople: data = {
   peoples: [
     { name: "John", age: 30 },
